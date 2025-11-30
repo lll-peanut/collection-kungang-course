@@ -1,0 +1,71 @@
+/* 全局样式重置 + 福大校色/字体规范 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Microsoft Yahei", "思源黑体", sans-serif;
+}
+
+/* 福大主题色变量（校徽蓝+校史红/红色文化） */
+:root {
+  --fd-blue: #0055A4;    /* 福大校徽蓝 */
+  --fd-red: #C8102E;     /* 福大红色/红色文化主色 */
+  --fd-gray: #F5F5F5;    /* 背景灰 */
+  --fd-dark: #333333;    /* 正文深灰 */
+  --fd-light-red: #FDE8EA; /* 红色浅背景 */
+}
+
+/* 页面基础样式 */
+body {
+  color: var(--fd-dark);
+  background-color: #fff;
+  line-height: 1.6;
+}
+
+/* 容器通用样式 */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* 标题通用样式（适配红色校史主题） */
+.page-title {
+  text-align: center;
+  padding: 40px 0;
+  color: var(--fd-red);
+  font-size: 2.2rem;
+  font-weight: 700;
+  border-bottom: 2px solid var(--fd-light-red);
+  margin-bottom: 40px;
+}
+
+/* 通用按钮样式 */
+.btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.btn-red {
+  background-color: var(--fd-red);
+  color: #fff;
+}
+.btn-red:hover {
+  background-color: #A80E25;
+  transform: translateY(-2px);
+}
+
+/* 响应式基础：适配移动端 */
+@media (max-width: 768px) {
+  .page-title {
+    font-size: 1.8rem;
+    padding: 20px 0;
+    margin-bottom: 20px;
+  }
+  .container {
+    padding: 0 15px;
+  }
+}

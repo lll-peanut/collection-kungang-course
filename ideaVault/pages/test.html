@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>福州大学 - 红色校情与学院风采</title>
+  <!-- 引入全局样式 -->
+  <link rel="stylesheet" href="../css/common.css">
+  <!-- 首页专属样式 -->
+  <style>
+    /* 首页头部 */
+    .header {
+      background: linear-gradient(120deg, var(--fd-red), var(--fd-blue));
+      color: #fff;
+      padding: 20px 0;
+      text-align: center;
+    }
+    .header-title {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+    .header-subtitle {
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
+    /* 导航卡片区域 */
+    .nav-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      padding: 40px 0;
+    }
+    .nav-card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+      padding: 30px 20px;
+      text-align: center;
+      transition: all 0.3s ease;
+      border-top: 4px solid var(--fd-red);
+    }
+    .nav-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    }
+    .nav-card-icon {
+      font-size: 2.5rem;
+      color: var(--fd-red);
+      margin-bottom: 20px;
+    }
+    .nav-card-title {
+      font-size: 1.3rem;
+      color: var(--fd-dark);
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
+    .nav-card-desc {
+      color: #666;
+      margin-bottom: 25px;
+      line-height: 1.6;
+    }
+    .nav-card-btn {
+      display: inline-block;
+      padding: 10px 25px;
+      background: var(--fd-red);
+      color: #fff;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .nav-card-btn:hover {
+      background: #A80E25;
+    }
+
+    /* 页脚 */
+    .footer {
+      background: var(--fd-dark);
+      color: #fff;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 50px;
+    }
+
+    /* 移动端适配 */
+    @media (max-width: 768px) {
+      .header-title {
+        font-size: 1.6rem;
+      }
+      .nav-container {
+        gap: 20px;
+        padding: 20px 0;
+      }
+      .nav-card {
+        padding: 20px 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 头部 -->
+  <header class="header">
+    <div class="container">
+      <h1 class="header-title">福州大学 · 红色校魂 薪火相传</h1>
+      <p class="header-subtitle">校史传承 · 校园风采 · 学院发展</p>
+    </div>
+  </header>
+
+  <!-- 核心导航区域 -->
+  <div class="container">
+    <div class="nav-container">
+      <!-- 校史馆入口卡片 -->
+      <div class="nav-card">
+        <div class="nav-card-icon">📜</div>
+        <h2 class="nav-card-title">校史馆</h2>
+        <p class="nav-card-desc">追溯福大红色校史脉络，通过时间轴、珍贵图片与文字，重温建校以来的红色传承与发展历程。</p>
+        <a href="history.html" class="nav-card-btn">进入校史馆</a>
+      </div>
+
+      <!-- 校园打卡点入口卡片 -->
+      <div class="nav-card">
+        <div class="nav-card-icon">🗺️</div>
+        <h2 class="nav-card-title">校园打卡点</h2>
+        <p class="nav-card-desc">探索校园内的特色地点与红色打卡点，点击查看每个点位的详细介绍与实景照片。</p>
+        <a href="checkin.html" class="nav-card-btn">探索打卡点</a>
+      </div>
+
+      <!-- 学院简介入口卡片 -->
+      <div class="nav-card">
+        <div class="nav-card-icon">🏫</div>
+        <h2 class="nav-card-title">学院简介</h2>
+        <p class="nav-card-desc">了解学院核心风貌，包含导航栏、教师风采展示与重点实验室介绍，展现学院发展成果。</p>
+        <a href="college.html" class="nav-card-btn">查看学院简介</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <div class="container">
+      <p>福州大学 · 红色校情展示平台 © 2025</p>
+    </div>
+  </footer>
+</body>
+</html>

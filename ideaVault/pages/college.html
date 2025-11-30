@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>福州大学XX学院 - 学院简介</title>
+  <link rel="stylesheet" href="../css/common.css">
+  <style>
+    /* 导航栏 */
+    .college-nav {
+      background: var(--fd-blue);
+      padding: 15px 0;
+      margin-bottom: 30px;
+    }
+    .nav-list {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      list-style: none;
+    }
+    .nav-item {
+      margin: 0 15px;
+    }
+    .nav-link {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1rem;
+      padding: 5px 10px;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+    }
+    .nav-link:hover, .nav-link.active {
+      background: var(--fd-red);
+    }
+
+    /* 教师风采 */
+    .teacher-section, .lab-section {
+      margin: 40px 0;
+    }
+    .section-title {
+      color: var(--fd-red);
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      border-left: 4px solid var(--fd-red);
+      padding-left: 10px;
+    }
+    .teacher-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    .teacher-item {
+      text-align: center;
+      padding: 15px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    .teacher-avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin: 0 auto 10px;
+      background: var(--fd-light-red);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--fd-red);
+      font-size: 2rem;
+    }
+    .teacher-name {
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+    .teacher-desc {
+      color: #666;
+      font-size: 0.9rem;
+    }
+
+    /* 实验室介绍 */
+    .lab-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .lab-item {
+      padding: 20px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      border-top: 3px solid var(--fd-blue);
+    }
+    .lab-title {
+      color: var(--fd-blue);
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .lab-desc {
+      color: #666;
+      line-height: 1.6;
+    }
+
+    /* 返回按钮 */
+    .back-btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 8px 20px;
+      background: var(--fd-red);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+    .back-btn:hover {
+      background: #A80E25;
+    }
+
+    /* 移动端适配 */
+    @media (max-width: 768px) {
+      .nav-item {
+        margin: 5px 10px;
+      }
+      .section-title {
+        font-size: 1.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 学院导航栏 -->
+  <nav class="college-nav">
+    <div class="container">
+      <ul class="nav-list">
+        <li class="nav-item"><a href="#" class="nav-link active">首页</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">教师风采</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">实验室</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">红色科研</a></li>
+        <li class="nav-item"><a href="index.html" class="nav-link">返回总首页</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1 class="page-title">福州大学XX学院 简介</h1>
+
+    <!-- 教师风采板块（成员4完善） -->
+    <section class="teacher-section">
+      <h2 class="section-title">教师风采</h2>
+      <div class="teacher-list">
+        <div class="teacher-item">
+          <div class="teacher-avatar">👨‍🏫</div>
+          <h3 class="teacher-name">李教授</h3>
+          <p class="teacher-desc">红色科研带头人，专注于国家战略领域研究</p>
+        </div>
+        <div class="teacher-item">
+          <div class="teacher-avatar">👩‍🏫</div>
+          <h3 class="teacher-name">王老师</h3>
+          <p class="teacher-desc">思政教育名师，深耕红色校史与课程融合</p>
+        </div>
+        <div class="teacher-item">
+          <div class="teacher-avatar">👨‍🏫</div>
+          <h3 class="teacher-name">张副教授</h3>
+          <p class="teacher-desc">实验室核心骨干，主持多项红色科研项目</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 实验室介绍板块（成员5完善） -->
+    <section class="lab-section">
+      <h2 class="section-title">重点实验室</h2>
+      <div class="lab-list">
+        <div class="lab-item">
+          <h3 class="lab-title">红色智能技术实验室</h3>
+          <p class="lab-desc">聚焦红色文化数字化传播，研发校史数字展馆、红色VR等技术，服务校园红色教育。</p>
+        </div>
+        <div class="lab-item">
+          <h3 class="lab-title">先进材料实验室</h3>
+          <p class="lab-desc">围绕国家重大需求开展科研，团队获多项省级以上奖项，传承求是报国的红色科研精神。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 返回首页 -->
+    <a href="homepage.html" class="back-btn">返回总首页</a>
+  </div>
+  <script src="../js/common.js"></script>
+</body>
+</html>

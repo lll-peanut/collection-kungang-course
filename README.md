@@ -1,48 +1,34 @@
-# 西二昆冈金课 作业提交仓库
+# 项目介绍
 
-## 作业说明
+## 项目结构
 
-分组进行项目实践（3-4人一组），完成一个简单的网页设计。
 
-参考内容：
 
-1. 校史馆：设计展示福大校史与红色文化的简易页面，含“时间轴 + 图片 + 简介”模块。
-2. 校园打卡点页面：展示校园地图上的特色地点，点击即可查看简介与照片。
-3. 学院简介展示页：设计学院网页首页原型，含导航栏、教师风采与实验室介绍板块。
+ideaVault/           # 小组名
+├── assets/          # 公共素材库
+│   ├── images/      # 校史图片、打卡点图片、学院图片
+│   └── data/        # 简介文字、时间轴数据、打卡点坐标等
+├── css/             # 通用样式+各模块样式
+│   ├── common.css   # 全局样式
+│   ├── timeline.css # 时间轴样式
+│   ├── map.css      # 打卡点样式
+│   └── college.css  # 学院简介样式
+├── js/              # 通用脚本+各模块脚本
+│   ├── common.js    # 通用组件
+│   ├── timeline.js  # 时间轴交互
+│   ├── map.js       # 打卡点交互
+│   └── college.js   # 学院简介交互
+├── pages/           # 所有页面入口
+│   ├── history.html # 校史馆页面
+│   ├── checkin.html # 校园打卡点页面
+│   └── college.html # 学院简介页面
+└── README.md        # 项目说明
 
-*（同学可以自己选择，但选择红色、学校相关的项目会得更高的分）*
+## 说明
+1. 为了避免命名冲突，在自己生成的文件前加自己学号最后一位。如： 102400000， 文件命名： 0common.css
+2. 将自己的项目说明README写在README文件夹下，命名如： history_README.md。
+3. 分工如下
 
-## 提交流程提示和作业要求
-
-1. 组长 Fork 本仓库
-2. 组长邀请所有组员作为 Collaborator
-3. 所有组员 Clone 组长的仓库到本地
-4. 在 work 文件夹下创建一个命名为小组名的文件夹
-5. 在该文件夹下，小组成员协作完成网页的各个部分
-   1. 每位成员创建自己的分支（branch）
-   2. 完成部分后 Commit & Push
-   3. 小组成员通过 Pull Request 合并到组长仓库主分支
-6. 组长最后将整合后的 main 分支提交 PR 回原始仓库
-
-## 评估方式
-
-将主要分为两个评分项：
-
-1. 作品质量分
-
-   主要评估网页设计的美观性、功能性和用户体验等。
-
-2. 协作过程分
-
-   主要评估小组成员之间的协作情况，包括分支管理、代码合并和冲突解决等。
-
-## 相关资料和文档
-
-西二在线飞书共享知识库，Git 与 GitHub 相关教程：
-
-[https://west2-online.feishu.cn/wiki/Lsz9w3CiGinXzgkevtmceHZknrf](https://west2-online.feishu.cn/wiki/Lsz9w3CiGinXzgkevtmceHZknrf)
-
-## 欢迎加入西二在线！
-
-了解我们：
-[https://west2-online.feishu.cn/wiki/CFkrwmyUsi5lmVkCYjOcKX2znGb](https://west2-online.feishu.cn/wiki/CFkrwmyUsi5lmVkCYjOcKX2znGb)
+- 校史馆: INKOFHEART
+- 打卡点： Pandaliy
+- 学院简介： Amo, Wea-sudo
