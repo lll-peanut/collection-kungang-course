@@ -1,96 +1,1330 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>福州大学 校史馆 - 红色校史脉络</title>
-  <!-- 引入全局样式 -->
-  <link rel="stylesheet" href="../css/common.css">
-  <!-- 引入时间轴样式 -->
-  <link rel="stylesheet" href="../css/timeline.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>福州大学红色校史 - 传承红色基因</title>
+    <!-- 引入外部样式 -->
+    <link rel="stylesheet" href="../assets/css/common.css">
+    <link rel="stylesheet" href="../assets/css/timeline.css">
+    <!-- 引入图标库 -->
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 全局基础排版优化 */
+        :root {
+            --fd-red: #c8102e;
+            --fd-light-red: #fef0f2;
+            --fd-blue: #0055a4;
+            --fd-dark: #333;
+            --fd-gray: #666;
+            --fd-light-gray: #f8f8f8;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.12);
+            --shadow-lg: 0 8px 20px rgba(0,0,0,0.15);
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --spacing-xs: 8px;
+            --spacing-sm: 16px;
+            --spacing-md: 24px;
+            --spacing-lg: 32px;
+            --spacing-xl: 48px;
+            --spacing-xxl: 60px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Microsoft Yahei", "PingFang SC", "Helvetica Neue", sans-serif;
+            color: var(--fd-dark);
+            background-color: #fff;
+            line-height: 1.6;
+            /* 全局背景图样 - 淡红色复古纹理 */
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23c8102e' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-sm);
+        }
+
+        /* 导航栏排版优化 */
+        .navbar {
+            background-color: #fff;
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            padding: 0;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .navbar-logo .logo-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            gap: 8px;
+        }
+
+        .navbar-links {
+            display: flex;
+            gap: var(--spacing-md);
+        }
+
+        .nav-link {
+            color: var(--fd-dark);
+            text-decoration: none;
+            font-size: 15px;
+            padding: 8px 12px;
+            border-radius: var(--radius-sm);
+            transition: all 0.3s ease;
+        }
+
+        .nav-link.active {
+            color: var(--fd-red);
+            font-weight: 600;
+            background-color: var(--fd-light-red);
+        }
+
+        .nav-link:hover:not(.active) {
+            color: var(--fd-red);
+        }
+
+        /* 页面标题排版 */
+        .page-title {
+            font-size: 2.2rem;
+            color: var(--fd-dark);
+            text-align: center;
+            margin: var(--spacing-xxl) 0 var(--spacing-xl);
+            font-weight: 700;
+            position: relative;
+            padding-bottom: var(--spacing-sm);
+        }
+
+        .page-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--fd-red);
+        }
+
+        /* 时间轴区域排版优化 */
+        .timeline-container {
+            margin: var(--spacing-xxl) 0;
+            /* 时间轴区域背景图样 - 红色线条纹理 */
+            background-image: url("data:image/svg+xml,%3Csvg width='12' height='16' viewBox='0 0 12 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 .99C4 .445 4.444 0 5 0c.552 0 1 .45 1 .99v4.02C6 5.555 5.556 6 5 6c-.552 0-1-.45-1-.99V.99zm6 8c0-.545.444-.99 1-.99.552 0 1 .45 1 .99v4.02c0 .545-.444.99-1 .99-.552 0-1-.45-1-.99V8.99z' fill='%23c8102e' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 3px;
+            background-color: var(--fd-light-red);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            margin-bottom: var(--spacing-xl);
+            position: relative;
+            display: flex;
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-dot {
+            width: 20px;
+            height: 20px;
+            background-color: var(--fd-red);
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            top: 24px;
+            transform: translateX(-50%);
+            z-index: 1;
+            box-shadow: 0 0 0 6px rgba(200, 16, 46, 0.1);
+        }
+
+        .timeline-content {
+            width: 45%;
+            padding: var(--spacing-md);
+            background-color: #fff;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            /* 卡片内轻微背景 */
+            background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23fef0f2' fill-opacity='0.5' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .timeline-content:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-3px);
+        }
+
+        .timeline-year {
+            font-size: 1.8rem;
+            color: var(--fd-red);
+            font-weight: 700;
+            margin-bottom: var(--spacing-xs);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .timeline-year i {
+            font-size: 1.5rem;
+        }
+
+        .timeline-stage {
+            font-size: 1.1rem;
+            color: var(--fd-blue);
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+            display: block;
+            padding-left: 2px;
+            border-left: 3px solid var(--fd-blue);
+        }
+
+        .timeline-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: var(--radius-sm);
+            margin-bottom: var(--spacing-sm);
+            cursor: zoom-in; /* 鼠标样式提示可点击放大 */
+            transition: all 0.3s ease;
+            border: 1px solid var(--fd-light-red);
+        }
+
+        .timeline-img:hover {
+            opacity: 0.9;
+            transform: scale(1.01);
+        }
+
+        .timeline-desc {
+            color: var(--fd-gray);
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: var(--spacing-sm);
+            text-indent: 2em;
+        }
+
+        /* 可点击展开的详细文本样式 */
+        .timeline-detail-trigger {
+            color: var(--fd-red);
+            font-size: 14px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s ease;
+            margin-top: 8px;
+        }
+
+        .timeline-detail-trigger:hover {
+            color: #a00c22;
+            text-decoration: underline;
+        }
+
+        .timeline-detail-content {
+            margin-top: var(--spacing-sm);
+            padding: var(--spacing-md);
+            background-color: var(--fd-light-red);
+            border-radius: var(--radius-sm);
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .timeline-detail-content.active {
+            display: block;
+        }
+
+        .detail-item {
+            margin-bottom: var(--spacing-xs);
+            padding-left: 16px;
+            position: relative;
+        }
+
+        .detail-item::before {
+            content: "•";
+            color: var(--fd-red);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .detail-quote {
+            font-style: italic;
+            color: var(--fd-blue);
+            border-left: 3px solid var(--fd-blue);
+            padding-left: var(--spacing-sm);
+            margin: var(--spacing-sm) 0;
+            background-color: rgba(0, 85, 164, 0.03);
+        }
+
+        /* 打卡点区域排版优化 */
+        .checkin-section {
+            padding: var(--spacing-xxl) 0;
+            background-color: var(--fd-light-red);
+            margin: var(--spacing-xxl) 0;
+            /* 打卡点区域背景图样 - 红色点阵 */
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 50 L50 60 L60 60 L60 50 Z M40 40 L40 50 L50 50 L50 40 Z M60 40 L60 50 L70 50 L70 40 Z M40 60 L40 70 L50 70 L50 60 Z M60 60 L60 70 L70 70 L70 60 Z' fill='%23c8102e' fill-opacity='0.05'/%3E%3C/svg%3E");
+        }
+
+        .checkin-title {
+            text-align: center;
+            color: var(--fd-red);
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-xl);
+            position: relative;
+            padding-bottom: var(--spacing-sm);
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .checkin-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background-color: var(--fd-red);
+        }
+
+        .checkin-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+            padding: 0 var(--spacing-md);
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .checkin-card {
+            background-color: #fff;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            position: relative;
+            /* 打卡点卡片背景 */
+            background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23fef0f2' fill-opacity='0.3' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .checkin-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .checkin-card.red-tag::before {
+            content: "红色打卡点";
+            position: absolute;
+            top: var(--spacing-sm);
+            left: var(--spacing-sm);
+            background-color: var(--fd-red);
+            color: #fff;
+            font-size: 12px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            z-index: 1;
+        }
+
+        .checkin-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            cursor: zoom-in; /* 鼠标样式提示可点击放大 */
+            transition: all 0.3s ease;
+            border-bottom: 2px solid var(--fd-light-red);
+        }
+
+        .checkin-img:hover {
+            opacity: 0.9;
+            transform: scale(1.01);
+        }
+
+        .checkin-info {
+            padding: var(--spacing-md);
+        }
+
+        .checkin-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--fd-dark);
+            margin-bottom: var(--spacing-xs);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .checkin-name i {
+            color: var(--fd-red);
+        }
+
+        .checkin-desc {
+            font-size: 14px;
+            color: var(--fd-gray);
+            line-height: 1.7;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        /* 打卡点详情展开 */
+        .checkin-detail-trigger {
+            color: var(--fd-blue);
+            font-size: 13px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .checkin-detail-trigger:hover {
+            color: var(--fd-red);
+            text-decoration: underline;
+        }
+
+        .checkin-detail-content {
+            margin-top: var(--spacing-sm);
+            padding: var(--spacing-sm);
+            background-color: rgba(0, 85, 164, 0.03);
+            border-radius: var(--radius-sm);
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .checkin-detail-content.active {
+            display: block;
+        }
+
+        /* 地图区域排版优化 */
+        .map-container {
+            margin: var(--spacing-xxl) auto;
+            padding: var(--spacing-lg);
+            background-color: #fff;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            max-width: 1100px;
+            /* 地图区域背景 */
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3z' fill='%230055a4' fill-opacity='0.02' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+
+        .map-title {
+            font-size: 1.5rem;
+            color: var(--fd-blue);
+            margin-bottom: var(--spacing-md);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding-bottom: var(--spacing-xs);
+            border-bottom: 2px solid var(--fd-light-red);
+        }
+
+        .map-title i {
+            color: var(--fd-red);
+        }
+
+        #campus-map {
+            width: 100%;
+            height: 500px;
+            border: 1px solid var(--fd-light-red);
+            border-radius: var(--radius-sm);
+            position: relative;
+            overflow: hidden;
+            background: url('../assets/images/map/bg-map.png') center/contain no-repeat;
+            background-color: var(--fd-light-gray);
+        }
+
+        .map-point {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-color: rgba(200, 16, 46, 0.8);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: bold;
+            box-shadow: var(--shadow-sm);
+            font-size: 12px;
+        }
+
+        .map-point:hover {
+            width: 36px;
+            height: 36px;
+            background-color: var(--fd-red);
+        }
+
+        .map-point.normal {
+            background-color: rgba(0, 85, 164, 0.8);
+        }
+
+        .map-point.normal:hover {
+            background-color: var(--fd-blue);
+        }
+
+        .map-tooltip {
+            position: absolute;
+            background-color: #fff;
+            padding: var(--spacing-sm);
+            border-radius: var(--radius-sm);
+            box-shadow: var(--shadow-md);
+            width: 250px;
+            z-index: 10;
+            display: none;
+            border-left: 3px solid var(--fd-red);
+        }
+
+        .map-tooltip-title {
+            font-weight: 600;
+            color: var(--fd-red);
+            margin-bottom: 5px;
+            font-size: 15px;
+        }
+
+        .map-tooltip-desc {
+            font-size: 13px;
+            color: var(--fd-gray);
+            line-height: 1.6;
+        }
+
+        /* 页脚排版优化 */
+        .footer {
+            background-color: var(--fd-dark);
+            color: #fff;
+            padding: var(--spacing-xl) 0;
+            text-align: center;
+            margin-top: var(--spacing-xxl);
+            /* 页脚背景图样 */
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-md);
+            color: var(--fd-red);
+        }
+
+        .footer-desc {
+            font-size: 14px;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-sm);
+            color: #ccc;
+        }
+
+        /* 图片放大预览弹窗样式 */
+        .image-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 9999;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .image-modal.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+
+        .modal-img {
+            max-width: 100%;
+            max-height: 90vh;
+            border-radius: 8px;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: #fff;
+            font-size: 30px;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            color: var(--fd-red);
+            transform: rotate(90deg);
+        }
+
+        .modal-caption {
+            position: absolute;
+            bottom: -35px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            color: #fff;
+            font-size: 14px;
+            padding-top: 10px;
+        }
+
+        /* 文本详情放大弹窗 */
+        .text-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            z-index: 9999;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+            overflow-y: auto;
+        }
+
+        .text-modal.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .text-modal-content {
+            background-color: #fff;
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-md);
+            max-width: 800px;
+            width: 100%;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .text-modal-close {
+            position: absolute;
+            top: var(--spacing-sm);
+            right: var(--spacing-sm);
+            color: var(--fd-gray);
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .text-modal-close:hover {
+            color: var(--fd-red);
+            transform: rotate(90deg);
+        }
+
+        .text-modal-title {
+            font-size: 1.8rem;
+            color: var(--fd-red);
+            margin-bottom: var(--spacing-md);
+            padding-bottom: var(--spacing-sm);
+            border-bottom: 2px solid var(--fd-light-red);
+        }
+
+        .text-modal-body {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--fd-dark);
+        }
+
+        .text-modal-body .detail-item {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .text-modal-body .detail-quote {
+            margin: var(--spacing-md) 0;
+            padding: var(--spacing-sm);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* 响应式排版适配 */
+        @media (max-width: 992px) {
+            .timeline::before {
+                left: 40px;
+            }
+
+            .timeline-item {
+                flex-direction: column;
+                margin-left: 60px;
+                margin-bottom: var(--spacing-lg);
+            }
+
+            .timeline-item:nth-child(even) {
+                flex-direction: column;
+            }
+
+            .timeline-dot {
+                left: 40px;
+                top: 20px;
+            }
+
+            .timeline-content {
+                width: 100%;
+                margin-bottom: var(--spacing-sm);
+            }
+
+            #campus-map {
+                height: 400px;
+            }
+
+            .text-modal-content {
+                padding: var(--spacing-md);
+            }
+
+            .text-modal-title {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar .container {
+                flex-direction: column;
+                height: auto;
+                padding: var(--spacing-sm) 0;
+            }
+
+            .navbar-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: var(--spacing-xs);
+                margin-top: var(--spacing-sm);
+            }
+
+            .page-title {
+                font-size: 1.8rem;
+                margin: var(--spacing-xl) 0 var(--spacing-lg);
+            }
+
+            .timeline-item {
+                margin-left: 40px;
+            }
+
+            .timeline-year {
+                font-size: 1.5rem;
+            }
+
+            .timeline-img {
+                height: 180px;
+            }
+
+            .checkin-list {
+                gap: var(--spacing-md);
+            }
+
+            #campus-map {
+                height: 300px;
+            }
+
+            .map-tooltip {
+                width: 200px;
+            }
+
+            .modal-close {
+                top: -35px;
+                font-size: 25px;
+            }
+
+            .text-modal-body {
+                font-size: 15px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .page-title {
+                font-size: 1.5rem;
+            }
+
+            .checkin-title {
+                font-size: 1.5rem;
+            }
+
+            .map-container {
+                padding: var(--spacing-sm);
+            }
+
+            .footer-logo {
+                font-size: 1.2rem;
+            }
+
+            .image-modal {
+                padding: 10px;
+            }
+
+            .modal-caption {
+                font-size: 12px;
+                bottom: -30px;
+            }
+
+            .text-modal-content {
+                padding: var(--spacing-sm);
+            }
+
+            .text-modal-title {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <!-- 页面容器 -->
-  <div class="container">
-    <!-- 页面标题（红色校史主题） -->
-    <h1 class="page-title">福州大学校史馆 - 红色校史发展脉络</h1>
-
-    <!-- 时间轴核心区域 -->
-    <div class="timeline-container">
-      <div class="timeline">
-        <!-- 节点1：建校初期（1958）- 红色建校背景 -->
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <div class="timeline-year">1958年</div>
-            <div class="timeline-stage">建校初期 · 红色奠基</div>
-            <!-- 图片：成员2补充（data-src为懒加载地址） -->
-            <img class="timeline-img" data-src="../assets/images/history/1958.jpg" alt="1958年福大建校">
-            <!-- 简介：成员2补充红色校史内容 -->
-            <div class="timeline-desc">
-              1958年，福州大学在国家战略需求与福建红色沃土上应运而生，建校之初便秉承“求是担当”的校训，融入福建革命老区的红色基因，首批师资多来自国内知名高校，为学校奠定了红色教育的根基。
-            </div>
-          </div>
+<!-- 导航栏 -->
+<nav class="navbar">
+    <div class="container">
+        <div class="navbar-logo">
+            <a href="homepage.html" class="logo-link">
+                <i class="fas fa-university" style="color: var(--fd-red);"></i>
+                <span style="color: var(--fd-blue); font-weight: 700; font-size: 1.2rem;">福州大学</span>
+            </a>
         </div>
-
-        <!-- 节点2：红色发展期（1978）- 思政教育起步 -->
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <div class="timeline-year">1978年</div>
-            <div class="timeline-stage">改革开放 · 红色传承</div>
-            <img class="timeline-img" data-src="../assets/images/history/1978.jpg" alt="1978年福大思政教育">
-            <div class="timeline-desc">
-              改革开放初期，福州大学率先在理工科院校中强化思政教育，开设红色校史课程，挖掘校友中的革命事迹，将红色文化融入人才培养全过程，成为福建高校红色教育的标杆。
-            </div>
-          </div>
+        <div class="navbar-links">
+            <a href="homepage.html" class="nav-link">首页</a>
+            <a href="history2.html" class="nav-link active">红色校史</a>
+            <a href="checkin.html" class="nav-link">打卡点</a>
+            <a href="digital-exhibition.html" class="nav-link">数字展馆</a>
+            <a href="about.html" class="nav-link">关于我们</a>
         </div>
-
-        <!-- 节点3：新时代（2008）- 红色教育基地建设 -->
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <div class="timeline-year">2008年</div>
-            <div class="timeline-stage">建校50周年 · 红色基地落成</div>
-            <img class="timeline-img" data-src="../assets/images/history/2008.jpg" alt="2008年福大校史馆落成">
-            <div class="timeline-desc">
-              2008年建校50周年之际，福州大学校史馆正式落成，专设“红色校史展区”，系统梳理学校在革命、建设、改革各个时期的红色足迹，成为校内红色教育核心基地。
-            </div>
-          </div>
-        </div>
-
-        <!-- 节点4：新征程（2021）- 红色校史创新传播 -->
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <div class="timeline-year">2021年</div>
-            <div class="timeline-stage">建党百年 · 红色校史数字化</div>
-            <img class="timeline-img" data-src="../assets/images/history/2021.jpg" alt="2021年福大红色校史数字化">
-            <div class="timeline-desc">
-              建党100周年之际，福州大学推出“红色校史数字展馆”，将校史馆内容线上化，通过VR、短视频等形式传播红色校史，覆盖师生超10万人次，让红色基因代代相传。
-            </div>
-          </div>
-        </div>
-
-        <!-- 节点5：未来展望 - 红色基因延续 -->
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <div class="timeline-year">未来展望</div>
-            <div class="timeline-stage">新征程 · 红色校史新发展</div>
-            <img class="timeline-img" data-src="../assets/images/history/future.jpg" alt="福大红色校史未来展望">
-            <div class="timeline-desc">
-              福州大学将持续深化红色校史研究与传播，把红色文化融入学科建设、科研创新、社会服务中，以“求是报国”的红色精神引领学校高质量发展，为国家培养更多红色基因传承人。
-            </div>
-          </div>
-        </div>
-      </div>
-      <a href="homepage.html" class="back-btn">返回总首页</a>
     </div>
-  </div>
+</nav>
 
-  <!-- 引入时间轴交互脚本 -->
-  <script src="../js/timeline.js"></script>
-  <script src="../js/common.js"></script>
+<!-- 页面主体 -->
+<main class="container">
+    <!-- 标题区域 -->
+    <h1 class="page-title">
+        <i class="fas fa-flag" style="margin-right: 10px; color: var(--fd-red);"></i>福州大学红色校史长廊
+    </h1>
+
+    <!-- 时间轴区域 -->
+    <section class="timeline-container">
+        <div class="timeline">
+            <!-- 1958年节点 -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year"><i class="fas fa-landmark"></i> 1958年</div>
+                    <span class="timeline-stage">建校初期 · 红色奠基</span>
+                    <img src="../assets/images/history/1958.jpg" alt="福州大学建校初期" class="timeline-img" data-src="../assets/images/history/1958.jpg" data-caption="福州大学建校初期">
+                    <p class="timeline-desc">福州大学在国家战略需求与福建红色沃土上应运而生，建校之初便秉承“求是担当”的校训，融入福建革命老区的红色基因。首批师资多来自清华大学、北京大学等国内知名高校，其中不乏参加过革命工作的进步知识分子，他们带来了严谨的治学态度和坚定的理想信念，为学校奠定了红色教育的根基。</p>
+
+                    <!-- 文本详情展开触发器 -->
+                    <div class="timeline-detail-trigger" data-target="detail-1958">
+                        <i class="fas fa-chevron-down"></i> 查看详细校史
+                    </div>
+
+                    <!-- 文本详情内容 -->
+                    <div class="timeline-detail-content" id="detail-1958">
+                        <div class="detail-item">1958年7月，福建省人民政府正式批准创办福州大学，时任福建省委第一书记叶飞同志亲自为学校选址，确定在福州西郊梅峰建设校址，寓意“梅花香自苦寒来”的红色奋斗精神。</div>
+                        <div class="detail-item">建校初期，学校开设机械工程、电机工程、化学工程等6个系8个专业，全部面向国家重点建设领域，首批招生374名学生，其中不少是来自革命老区的优秀青年。</div>
+                        <div class="detail-item">首任校长李温平先生是早年参加革命的知识分子，他在开学典礼上提出“为祖国培养建设人才，为福建工业崛起而奋斗”的办学宗旨，确立了学校服务国家、扎根地方的红色办学方向。</div>
+                        <div class="detail-quote">“我们办大学，不仅要教学生知识，更要育学生品德，让每个福大人都有一颗爱国心、一份报国志。”——李温平（福州大学首任校长）</div>
+                        <div class="detail-item">1959年，学校成立首个党支部，开展“红色课堂”活动，组织学生深入闽西革命老区参观学习，聆听老红军讲革命故事，红色基因从此在福大校园生根发芽。</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 1978年节点 -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year"><i class="fas fa-rocket"></i> 1978年</div>
+                    <span class="timeline-stage">改革开放 · 红色传承</span>
+                    <img src="../assets/images/history/1978.jpg" alt="改革开放时期校史" class="timeline-img" data-src="../assets/images/history/1978.jpg" data-caption="改革开放时期校史">
+                    <p class="timeline-desc">改革开放初期，福州大学率先在理工科院校中强化思政教育，将红色校史纳入人才培养体系。学校组织编写《福州大学红色校史读本》，挖掘校友中的革命事迹和奋斗故事，开设“红色文化”选修课，邀请老党员、老教师为学生讲述校史中的红色故事，将红色文化融入人才培养全过程，成为福建高校红色教育的标杆。</p>
+
+                    <!-- 文本详情展开触发器 -->
+                    <div class="timeline-detail-trigger" data-target="detail-1978">
+                        <i class="fas fa-chevron-down"></i> 查看详细校史
+                    </div>
+
+                    <!-- 文本详情内容 -->
+                    <div class="timeline-detail-content" id="detail-1978">
+                        <div class="detail-item">1978年，学校恢复招收本科生和研究生，当年招生人数突破1000人。为加强学生思想政治教育，学校成立“红色理论学习小组”，吸引300余名学生参与，定期开展马克思主义理论学习和校史红色文化研讨。</div>
+                        <div class="detail-item">1980年，学校建立“革命校友事迹陈列室”，收集展示了20余名投身革命、建设和国防事业的优秀校友事迹，其中包括为我国第一颗原子弹研发作出贡献的校友陈锦城、扎根边疆建设的校友林文雄等。</div>
+                        <div class="detail-item">1982年，学校启动“红色实践”活动，组织学生赴古田会议旧址、长汀红色苏区等革命圣地开展社会实践，让学生在实地学习中感悟红色精神，累计参与学生达5000余人次。</div>
+                        <div class="detail-quote">“红色文化是福大的精神底色，我们要让学生在学习专业知识的同时，传承红色基因，坚定理想信念，成为德智体美劳全面发展的社会主义建设者和接班人。”——黄金陵（福州大学原校长）</div>
+                        <div class="detail-item">这一时期，学校培养出一大批兼具专业素养和红色情怀的优秀人才，其中80%以上的毕业生选择留在福建工作，为地方经济建设和社会发展作出了重要贡献，践行了“扎根福建、服务福建”的办学承诺。</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2008年节点 -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year"><i class="fas fa-building"></i> 2008年</div>
+                    <span class="timeline-stage">建校50周年 · 红色基地落成</span>
+                    <img src="../assets/images/history/2008.jpg" alt="校史馆落成" class="timeline-img" data-src="../assets/images/history/2008.jpg" data-caption="校史馆落成">
+                    <p class="timeline-desc">2008年建校50周年之际，福州大学校史馆正式落成，总建筑面积2000平方米，专设“红色校史展区”，系统梳理学校在革命、建设、改革各个时期的红色足迹。展区通过实物、图片、文字、多媒体等多种形式，全面展示了学校的红色办学传统和精神文化传承，成为校内红色教育核心基地和福建省爱国主义教育基地。</p>
+
+                    <!-- 文本详情展开触发器 -->
+                    <div class="timeline-detail-trigger" data-target="detail-2008">
+                        <i class="fas fa-chevron-down"></i> 查看详细校史
+                    </div>
+
+                    <!-- 文本详情内容 -->
+                    <div class="timeline-detail-content" id="detail-2008">
+                        <div class="detail-item">校史馆“红色校史展区”分为“红色奠基”“红色传承”“红色发展”三个部分，收藏展示了建校初期的校旗、校徽、教学仪器、老照片等珍贵文物1000余件，其中包括首任校长李温平的手稿、1958年的录取通知书、革命校友的日记等。</div>
+                        <div class="detail-item">2008年10月20日，校史馆举行开馆仪式，时任福建省委常委、教育工委书记唐国忠同志出席并为校史馆揭牌，高度评价福州大学“红色校史是福建高校宝贵的精神财富”。</div>
+                        <div class="detail-item">校史馆开馆后，成为学校新生入学教育、党员教育、爱国主义教育的重要阵地，年均接待参观师生和社会各界人士3万余人次，累计接待超50万人次。</div>
+                        <div class="detail-item">2010年，学校依托校史馆成立“红色文化研究中心”，组织专家学者开展红色校史研究，出版《福州大学红色校史研究》《革命校友风采录》等著作10余部，发表相关研究论文50余篇。</div>
+                        <div class="detail-quote">“校史馆是福大红色基因的载体，是传承红色精神的课堂，要让每一位福大人都了解学校的红色历史，牢记初心使命，勇担时代责任。”——吴敏生（福州大学原校长）</div>
+                        <div class="detail-item">这一时期，学校还打造了“红色校史进校园”系列活动，组织校史讲解员深入各学院、各班级开展校史宣讲，让红色文化深入人心，形成了“人人学校史、人人传红色”的良好氛围。</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2021年节点 -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year"><i class="fas fa-globe"></i> 2021年</div>
+                    <span class="timeline-stage">建党百年 · 红色校史数字化</span>
+                    <img src="../assets/images/history/2021.jpg" alt="红色校史数字化" class="timeline-img" data-src="../assets/images/history/2021.jpg" data-caption="红色校史数字化">
+                    <p class="timeline-desc">建党100周年之际，福州大学响应国家“传承红色基因、赓续红色血脉”的号召，推出“红色校史数字展馆”，将校史馆内容线上化、数字化。数字展馆采用3D建模、VR虚拟现实、短视频等现代信息技术，打造了“虚拟校史馆”“红色校友故事”“校史大事记”等多个板块，让红色校史突破时空限制，覆盖师生超10万人次，成为学校红色教育的创新载体。</p>
+
+                    <!-- 文本详情展开触发器 -->
+                    <div class="timeline-detail-trigger" data-target="detail-2021">
+                        <i class="fas fa-chevron-down"></i> 查看详细校史
+                    </div>
+
+                    <!-- 文本详情内容 -->
+                    <div class="timeline-detail-content" id="detail-2021">
+                        <div class="detail-item">2021年6月，“福州大学红色校史数字展馆”正式上线，网站访问量在上线首月即突破5万人次，覆盖全国20多个省份的高校师生和校友。数字展馆收录了校史馆全部展品的高清图片和详细介绍，支持360度全景浏览，让用户足不出户就能“走进”校史馆。</div>
+                        <div class="detail-item">学校联合传媒学院拍摄《红色福大》系列短视频，共12集，每集5分钟，讲述了建校以来的红色故事、革命校友事迹、红色教育实践等内容，在抖音、视频号等平台播放量超200万次，获得广泛社会关注。</div>
+                        <div class="detail-item">推出“VR红色校史体验”项目，在图书馆、校史馆等地设置VR体验区，学生可通过VR设备“穿越”到建校初期的课堂、改革开放时期的实验室等场景，沉浸式感受学校的红色发展历程，累计体验人数达1.2万人次。</div>
+                        <div class="detail-item">开展“红色校史进校园、进社区、进企业”活动，组织师生志愿者带着数字展馆设备和宣传资料，深入福州周边中小学、社区和合作企业开展红色校史宣讲，覆盖人群超3万人次。</div>
+                        <div class="detail-quote">“数字化让红色校史活起来、动起来，我们要利用现代技术手段，让红色基因在青年一代中得到更好的传承和发展。”——付贤智（福州大学校长）</div>
+                        <div class="detail-item">2021年10月，该数字展馆入选“福建省红色文化数字化传播优秀案例”，成为福建省高校红色教育数字化的典范。学校还开发了“红色校史”微信小程序，推出校史知识问答、红色打卡等互动功能，吸引超2万名学生参与。</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 未来展望节点 -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year"><i class="fas fa-star"></i> 未来展望</div>
+                    <span class="timeline-stage">新征程 · 红色校史新发展</span>
+                    <img src="../assets/images/history/future.jpg" alt="红色校史未来发展" class="timeline-img" data-src="../assets/images/history/future.jpg" data-caption="红色校史未来发展">
+                    <p class="timeline-desc">福州大学将持续深化红色校史研究与传播，把红色文化融入学科建设、科研创新、社会服务中。未来，学校将进一步丰富红色校史资源，创新红色教育形式，打造红色文化品牌，以“求是报国”的红色精神引领学校高质量发展，为国家培养更多红色基因传承人，为实现中华民族伟大复兴的中国梦贡献福大力量。</p>
+
+                    <!-- 文本详情展开触发器 -->
+                    <div class="timeline-detail-trigger" data-target="detail-future">
+                        <i class="fas fa-chevron-down"></i> 查看详细规划
+                    </div>
+
+                    <!-- 文本详情内容 -->
+                    <div class="timeline-detail-content" id="detail-future">
+                        <div class="detail-item">校史研究深化：建立“红色校史数据库”，系统收集整理学校各个时期的红色文献、口述历史、实物资料等，开展红色校史专项研究，计划每年出版1-2部红色校史研究著作，发表相关论文20篇以上。</div>
+                        <div class="detail-item">教育形式创新：开发红色校史线上课程，纳入学校通识教育体系，计划覆盖全体本科生；打造“红色校史实践基地”，与闽西革命老区、古田会议旧址等单位共建10个校外实践基地，组织学生开展红色研学、社会实践等活动。</div>
+                        <div class="detail-item">数字展馆升级：计划引入AI导览、虚拟讲解员等新技术，升级红色校史数字展馆，开发移动端APP，实现校史内容的个性化推荐和智能问答，提升用户体验。</div>
+                        <div class="detail-item">文化品牌打造：打造“福大红色讲堂”品牌活动，定期邀请党史专家、革命前辈、优秀校友等开展讲座；举办“红色校史文化节”，通过征文、演讲、朗诵、文创设计等形式，营造红色文化氛围。</div>
+                        <div class="detail-quote">“红色校史是福大的根与魂，我们要把红色基因融入办学治校全过程，培养一代又一代具有家国情怀、担当精神的福大人，为服务国家战略和福建发展贡献力量。”——张天明（福州大学党委书记）</div>
+                        <div class="detail-item">国际传播拓展：依托学校海外办学机构和合作院校，推出多语种版红色校史数字展馆，向海外展示中国高等教育的红色基因和福大的办学成就，讲好中国故事、福大故事。</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 打卡点区域 -->
+    <section class="checkin-section">
+        <h2 class="checkin-title">
+            <i class="fas fa-map-marker-alt"></i> 红色校史打卡点
+        </h2>
+        <div class="checkin-list">
+            <!-- 校史馆打卡点 -->
+            <div class="checkin-card red-tag">
+                <img src="../assets/images/checkin/history-museum.jpg" alt="福州大学校史馆" class="checkin-img" data-src="../assets/images/checkin/school-museum.jpg" data-caption="福州大学校史馆">
+                <div class="checkin-info">
+                    <div class="checkin-name"><i class="fas fa-landmark"></i> 校史馆</div>
+                    <p class="checkin-desc">福州大学校史馆是学校红色校史展示的核心阵地，建筑面积2000平方米，专设红色校史展区，系统展示学校自1958年建校以来的红色发展历程和革命校友事迹。</p>
+                    <div class="checkin-detail-trigger" data-target="checkin-1">
+                        <i class="fas fa-info-circle"></i> 查看打卡详情
+                    </div>
+                    <div class="checkin-detail-content" id="checkin-1">
+                        <div class="detail-item">打卡地址：福州大学旗山校区行政楼1层</div>
+                        <div class="detail-item">开放时间：每周二至周日 9:00-17:00（周一闭馆）</div>
+                        <div class="detail-item">打卡特色：参观红色校史展区、聆听校史讲解、参与校史知识问答</div>
+                        <div class="detail-item">预约方式：可通过“福州大学校史馆”微信公众号预约团体参观</div>
+                        <div class="detail-item">打卡福利：完成打卡可获得校史馆定制文创纪念品</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 红色校史长廊打卡点 -->
+            <div class="checkin-card red-tag">
+                <img src="../assets/images/checkin/library.jpg" alt="旗山校区图书馆" class="checkin-img" data-src="../assets/images/checkin/history-corridor.jpg" data-caption="红色校史长廊">
+                <div class="checkin-info">
+                    <div class="checkin-name"><i class="fas fa-university"></i> 旗山校区图书馆</div>
+                    <div class="checkin-detail-trigger" data-target="checkin-2">
+                        <i class="fas fa-info-circle"></i> 查看打卡详情
+                    </div>
+                    <div class="checkin-detail-content" id="checkin-2">
+                        <div class="detail-item">打卡地址：福州大学旗山校区图书馆</div>
+                        <div class="detail-item">开放时间：全天开放</div>
+                        <div class="detail-item">打卡特色：沉浸式感受校史发展脉络、扫码收听校史故事语音讲解</div>
+                        <div class="detail-item">互动体验：长廊设置AR互动屏，可查看历史照片背后的故事</div>
+                        <div class="detail-item">打卡福利：拍摄打卡照片发布社交媒体可兑换校史文创产品</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 革命校友纪念园打卡点 -->
+            <div class="checkin-card red-tag">
+                <img src="../assets/images/checkin/memorial-park.jpg" alt="革命校友纪念园" class="checkin-img" data-src="../assets/images/checkin/alumni-park.jpg" data-caption="革命校友纪念园">
+                <div class="checkin-info">
+                    <div class="checkin-name"><i class="fas fa-monument"></i> 革命校友纪念园</div>
+                    <p class="checkin-desc">革命校友纪念园是为纪念为国家和人民作出贡献的福大革命校友而建，园内设有校友事迹墙、纪念雕塑、红色文化广场等，是缅怀革命先辈、传承红色精神的重要场所。</p>
+                    <div class="checkin-detail-trigger" data-target="checkin-3">
+                        <i class="fas fa-info-circle"></i> 查看打卡详情
+                    </div>
+                    <div class="checkin-detail-content" id="checkin-3">
+                        <div class="detail-item">打卡地址：福州大学旗山校区楚文楼旁</div>
+                        <div class="detail-item">开放时间：全天开放</div>
+                        <div class="detail-item">打卡特色：瞻仰革命校友事迹、参与缅怀纪念活动、诵读红色经典</div>
+                        <div class="detail-item">特色活动：每年清明节组织祭扫活动，七一建党节举办红色故事会</div>
+                        <div class="detail-item">打卡福利：可领取革命校友事迹手册，参与线上答题赢取纪念徽章</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- 图片放大弹窗 -->
+<div class="image-modal" id="image-modal">
+    <div class="modal-content">
+        <span class="modal-close" id="modal-close">&times;</span>
+        <img src="" alt="大图预览" class="modal-img" id="modal-img">
+        <div class="modal-caption" id="modal-caption"></div>
+    </div>
+</div>
+
+<!-- 文本详情放大弹窗 -->
+<div class="text-modal" id="text-modal">
+    <div class="text-modal-content">
+        <span class="text-modal-close" id="text-modal-close">&times;</span>
+        <h3 class="text-modal-title" id="text-modal-title"></h3>
+        <div class="text-modal-body" id="text-modal-body"></div>
+    </div>
+</div>
+
+<!-- 页脚 -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-logo">福州大学 · 红色校史传承</div>
+        <p class="footer-desc">
+            福州大学创办于1958年，是国家“双一流”建设高校、国家“211工程”重点建设大学。学校始终秉承“求是担当”的校训，传承红色基因，赓续红色血脉，<br>
+            把红色校史作为立德树人的重要资源，培养了一代又一代具有家国情怀和社会责任感的优秀人才。<br>
+            版权所有 © 2025 福州大学校史馆 保留所有权利
+        </p>
+    </div>
+</footer>
+
+<!-- JavaScript功能实现 -->
+<script>
+    // 文本详情展开/收起功能
+    document.querySelectorAll('.timeline-detail-trigger').forEach(trigger => {
+        trigger.addEventListener('click', function() {
+            const targetId = this.getAttribute('data-target');
+            const detailContent = document.getElementById(targetId);
+
+            // 切换显示状态
+            detailContent.classList.toggle('active');
+
+            // 切换图标
+            const icon = this.querySelector('i');
+            if (detailContent.classList.contains('active')) {
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
+                this.innerHTML = '<i class="fas fa-chevron-up"></i> 收起详细校史';
+
+                // 如果内容较长，提供放大查看选项
+                if (detailContent.scrollHeight > 300) {
+                    const hasExpandBtn = detailContent.querySelector('.expand-to-modal');
+                    if (!hasExpandBtn) {
+                        const expandBtn = document.createElement('div');
+                        expandBtn.className = 'timeline-detail-trigger expand-to-modal';
+                        expandBtn.style.marginTop = '10px';
+                        expandBtn.style.color = 'var(--fd-blue)';
+                        expandBtn.innerHTML = '<i class="fas fa-expand"></i> 放大查看完整内容';
+                        expandBtn.setAttribute('data-title', document.querySelector(`[data-target="${targetId}"]`).closest('.timeline-content').querySelector('.timeline-year').textContent + ' ' + document.querySelector(`[data-target="${targetId}"]`).closest('.timeline-content').querySelector('.timeline-stage').textContent);
+                        expandBtn.setAttribute('data-content', detailContent.innerHTML);
+                        detailContent.appendChild(expandBtn);
+
+                        // 绑定放大查看事件
+                        expandBtn.addEventListener('click', function(e) {
+                            e.stopPropagation();
+                            const textModal = document.getElementById('text-modal');
+                            const modalTitle = document.getElementById('text-modal-title');
+                            const modalBody = document.getElementById('text-modal-body');
+
+                            modalTitle.textContent = this.getAttribute('data-title');
+                            modalBody.innerHTML = this.getAttribute('data-content');
+
+                            // 移除放大按钮避免循环
+                            modalBody.querySelectorAll('.expand-to-modal').forEach(btn => btn.remove());
+
+                            textModal.classList.add('active');
+                            document.body.style.overflow = 'hidden';
+                        });
+                    }
+                }
+            } else {
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
+                this.innerHTML = '<i class="fas fa-chevron-down"></i> 查看详细校史';
+            }
+        });
+    });
+
+    // 打卡点详情展开/收起
+    document.querySelectorAll('.checkin-detail-trigger').forEach(trigger => {
+        trigger.addEventListener('click', function() {
+            const targetId = this.getAttribute('data-target');
+            const detailContent = document.getElementById(targetId);
+
+            detailContent.classList.toggle('active');
+
+            const icon = this.querySelector('i');
+            if (detailContent.classList.contains('active')) {
+                icon.classList.remove('fa-info-circle');
+                icon.classList.add('fa-minus-circle');
+                this.innerHTML = '<i class="fas fa-minus-circle"></i> 收起打卡详情';
+            } else {
+                icon.classList.remove('fa-minus-circle');
+                icon.classList.add('fa-info-circle');
+                this.innerHTML = '<i class="fas fa-info-circle"></i> 查看打卡详情';
+            }
+        });
+    });
+
+    // 图片放大预览功能
+    const imageModal = document.getElementById('image-modal');
+    const modalImg = document.getElementById('modal-img');
+    const modalCaption = document.getElementById('modal-caption');
+    const modalClose = document.getElementById('modal-close');
+
+    // 绑定图片点击事件
+    document.querySelectorAll('.timeline-img, .checkin-img').forEach(img => {
+        img.addEventListener('click', function() {
+            imageModal.classList.add('active');
+            modalImg.src = this.getAttribute('data-src');
+            modalCaption.textContent = this.getAttribute('data-caption');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    // 关闭图片弹窗
+    modalClose.addEventListener('click', function() {
+        imageModal.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+
+    // 点击弹窗外区域关闭
+    imageModal.addEventListener('click', function(e) {
+        if (e.target === imageModal) {
+            imageModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+
+    // 文本弹窗关闭功能
+    const textModal = document.getElementById('text-modal');
+    const textModalClose = document.getElementById('text-modal-close');
+
+    textModalClose.addEventListener('click', function() {
+        textModal.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+
+    // 点击文本弹窗外区域关闭
+    textModal.addEventListener('click', function(e) {
+        if (e.target === textModal) {
+            textModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+
+    // 地图点位提示框功能
+    const mapPoints = document.querySelectorAll('.map-point');
+    const mapTooltip = document.getElementById('map-tooltip');
+    const tooltipTitle = mapTooltip.querySelector('.map-tooltip-title');
+    const tooltipDesc = mapTooltip.querySelector('.map-tooltip-desc');
+
+    // 打卡点信息数据
+    const checkinData = {
+        '校史馆': {
+            title: '校史馆',
+            desc: '福州大学校史馆是学校红色校史展示的核心阵地，建筑面积2000平方米，专设红色校史展区，系统展示学校自1958年建校以来的红色发展历程和革命校友事迹。'
+        },
+        '红色校史长廊': {
+            title: '红色校史长廊',
+            desc: '红色校史长廊位于旗山校区图书馆前，全长200米，以图文并茂的形式展示了福州大学从1958年建校至今的重要历史节点和红色故事，是校园内重要的红色文化景观。'
+        },
+        '革命校友纪念园': {
+            title: '革命校友纪念园',
+            desc: '革命校友纪念园是为纪念为国家和人民作出贡献的福大革命校友而建，园内设有校友事迹墙、纪念雕塑、红色文化广场等，是缅怀革命先辈、传承红色精神的重要场所。'
+        }
+    };
+
+    // 绑定地图点位事件
+    mapPoints.forEach(point => {
+        // 鼠标悬停显示提示框
+        point.addEventListener('mouseenter', function(e) {
+            const pointName = this.getAttribute('data-tooltip');
+            const pointData = checkinData[pointName];
+
+            tooltipTitle.textContent = pointData.title;
+            tooltipDesc.textContent = pointData.desc;
+
+            // 定位提示框
+            mapTooltip.style.display = 'block';
+            mapTooltip.style.left = (e.pageX + 20) + 'px';
+            mapTooltip.style.top = (e.pageY - 50) + 'px';
+        });
+
+        // 鼠标离开隐藏提示框
+        point.addEventListener('mouseleave', function() {
+            mapTooltip.style.display = 'none';
+        });
+
+        // 点击点位放大查看详情
+        point.addEventListener('click', function() {
+            const pointName = this.getAttribute('data-tooltip');
+            const pointData = checkinData[pointName];
+
+            // 构建详细内容
+            let detailContent = `<div class="detail-item">打卡地址：${pointName === '校史馆' ? '福州大学旗山校区行政楼1层' : pointName === '红色校史长廊' ? '福州大学旗山校区图书馆南侧' : '福州大学旗山校区楚文楼旁'}</div>`;
+            detailContent += `<div class="detail-item">开放时间：${pointName === '校史馆' ? '每周二至周日 9:00-17:00（周一闭馆）' : '全天开放'}</div>`;
+            detailContent += `<div class="detail-item">打卡特色：${pointData.desc}</div>`;
+
+            // 显示文本弹窗
+            const textModal = document.getElementById('text-modal');
+            const modalTitle = document.getElementById('text-modal-title');
+            const modalBody = document.getElementById('text-modal-body');
+
+            modalTitle.textContent = '红色打卡点 · ' + pointData.title;
+            modalBody.innerHTML = detailContent;
+
+            textModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    // 键盘ESC关闭弹窗
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            imageModal.classList.remove('active');
+            textModal.classList.remove('active');
+            document.body.style.overflow = '';
+
+            // 收起所有展开的详情
+            document.querySelectorAll('.timeline-detail-content.active').forEach(content => {
+                content.classList.remove('active');
+                const trigger = document.querySelector(`[data-target="${content.id}"]`);
+                if (trigger) {
+                    trigger.innerHTML = '<i class="fas fa-chevron-down"></i> 查看详细校史';
+                }
+            });
+
+            document.querySelectorAll('.checkin-detail-content.active').forEach(content => {
+                content.classList.remove('active');
+                const trigger = document.querySelector(`[data-target="${content.id}"]`);
+                if (trigger) {
+                    trigger.innerHTML = '<i class="fas fa-info-circle"></i> 查看打卡详情';
+                }
+            });
+        }
+    });
+
+    // 页面滚动时导航栏样式变化
+    window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('.navbar');
+        if (window.scrollY > 50) {
+            navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
+            navbar.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
+        } else {
+            navbar.style.backgroundColor = '#fff';
+            navbar.style.boxShadow = '0 2px 8px rgba(0,0,0,0.08)';
+        }
+    });
+
+    // 平滑滚动
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            if (targetId !== '#') {
+                document.querySelector(targetId).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // 页面加载完成动画
+    window.addEventListener('load', function() {
+        document.body.classList.add('page-loaded');
+
+        // 时间轴元素渐入动画
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        timelineItems.forEach((item, index) => {
+            setTimeout(() => {
+                item.style.opacity = '1';
+                item.style.transform = 'translateY(0)';
+            }, 200 * index);
+        });
+    });
+</script>
 </body>
 </html>
