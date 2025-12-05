@@ -1,0 +1,261 @@
+/* 学院页面基础样式 */
+:root {
+  --fd-red: #C8102E;          /* 福大红色 */
+  --fd-light-red: #FDE8EA;    /* 红色浅背景 */
+  --fd-blue: #0055A4;         /* 福大蓝色 */
+  --fd-blue-light: #E8F4FF;   /* 蓝色浅背景 */
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* 导航栏样式 */
+.college-nav {
+  background: var(--fd-blue);
+  padding: 15px 0;
+  margin-bottom: 30px;
+}
+.nav-list {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+}
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  transition: background 0.3s;
+}
+.nav-link:hover, .nav-link.active {
+  background: var(--fd-red);
+}
+
+/* 页面标题 */
+.page-title {
+  text-align: center;
+  color: var(--fd-red);
+  font-size: 2rem;
+  margin: 30px 0;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--fd-light-red);
+}
+
+/* 学院简介 */
+.college-intro {
+  background: #F5F5F5;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  line-height: 1.8;
+}
+
+/* 数据统计模块 */
+.college-stat {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 20px 0 40px;
+}
+.stat-item {
+  flex: 1;
+  min-width: 150px;
+  text-align: center;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.stat-number {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--fd-blue);
+}
+.stat-label {
+  color: #666;
+  font-size: 0.9rem;
+  margin-top: 8px;
+}
+
+/* 板块标题通用样式 */
+.section-title {
+  color: var(--fd-red);
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  border-left: 4px solid var(--fd-red);
+  padding-left: 10px;
+}
+
+/* 教师风采板块样式 */
+.teacher-section {
+  margin: 40px 0;
+}
+.teacher-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+.teacher-item {
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+.teacher-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+.teacher-avatar {
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  font-size: 2.5rem;
+  margin: 0 auto 15px;
+  border-radius: 50%;
+  background: var(--fd-light-red);
+  color: var(--fd-red);
+}
+.teacher-name {
+  color: #333;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+.teacher-desc {
+  color: #666;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* 实验室板块样式 */
+.lab-section {
+  margin: 40px 0;
+}
+.lab-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+.lab-item {
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border-top: 3px solid var(--fd-blue);
+}
+.lab-title {
+  color: var(--fd-blue);
+  font-weight: 700;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+.lab-desc {
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+/* 实验室重点项目文字样式 */
+.lab-desc strong {
+  color: var(--fd-red);
+  margin-right: 4px;
+}
+
+/* 返回按钮样式 */
+.back-btn {
+  display: inline-block;
+  margin: 30px 0;
+  padding: 10px 20px;
+  background: var(--fd-red);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background 0.3s;
+}
+.back-btn:hover {
+  background: #A80E25;
+}
+
+/* 教师详情弹窗样式 */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.7);
+  z-index: 1000;
+  overflow: auto;
+}
+.modal-content {
+  background-color: #fff;
+  margin: 5% auto;
+  padding: 30px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 800px;
+  position: relative;
+  animation: modalOpen 0.3s;
+}
+/* 弹窗打开动画 */
+@keyframes modalOpen {
+  from {opacity: 0; transform: translateY(-50px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+.close-btn {
+  position: absolute;
+  right: 20px;
+  top: 15px;
+  font-size: 1.8rem;
+  color: var(--fd-red);
+  cursor: pointer;
+  line-height: 1;
+}
+.close-btn:hover {
+  color: #000;
+}
+/* 教师详情内容样式 */
+.teacher-detail h3 {
+  color: var(--fd-red);
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--fd-light-red);
+  font-size: 1.3rem;
+}
+.teacher-info {
+  margin-bottom: 20px;
+  line-height: 1.8;
+}
+.teacher-info p {
+  margin: 8px 0;
+  font-size: 1rem;
+}
+.teacher-achievements {
+  margin: 20px 0;
+}
+.teacher-achievements h4,
+.teacher-bio h4 {
+  color: var(--fd-blue);
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+.teacher-achievements ul {
+  padding-left: 20px;
+  line-height: 1.8;
+}
+.teacher-achievements li {
+  margin: 5px 0;
+  color: #555;
+}
+.teacher-bio p {
+  line-height: 1.8;
+  color: #555;
+}
