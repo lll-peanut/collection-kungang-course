@@ -259,3 +259,78 @@
   line-height: 1.8;
   color: #555;
 }
+
+/* 3张图片的容器 */
+.college-img-group {
+  margin: 20px 0;
+  display: flex;
+  flex-wrap: wrap; /* 移动端自动换行 */
+  gap: 20px; /* 图片间距 */
+  justify-content: center; /* 整体居中 */
+}
+
+/* 单张图片项 */
+.college-img-item {
+  flex: 1;
+  min-width: 280px; /* 移动端最小宽度，避免过窄 */
+  text-align: center;
+}
+
+/* 图片样式（大小为原尺寸1/2） */
+.college-img {
+  max-width: 100%; /* 核心：大小减小1/2 */
+  height: auto; /* 保持宽高比，防止变形 */
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* 图片描述文字 */
+.img-desc {
+  margin-top: 8px;
+  color: #666;
+  font-size: 14px;
+}
+
+/* 移动端适配（屏幕小于768px时） */
+@media (max-width: 768px) {
+  .college-img-group {
+    flex-direction: column; /* 移动端改为纵向排列 */
+    gap: 15px;
+  }
+  .college-img {
+    max-width: 80%; /* 移动端图片适当放大，提升观感 */
+  }
+}
+
+/* 图片预览模态框样式 */
+#imageModal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 1001; /* 确保在其他模态框上方 */
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+.modal-img {
+  display: block;
+  margin: 0 auto;
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+  animation: modalOpen 0.3s;
+}
+
+/* 确保点击图片时有指针提示 */
+.college-img {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.college-img:hover {
+  transform: scale(1.02);
+}

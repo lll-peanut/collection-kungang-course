@@ -49,6 +49,28 @@
       </div>
     </div>
 
+    <!-- 图片预览模态框 -->
+    <div id="imageModal" class="modal">
+      <span class="close-btn">&times;</span>
+      <img class="modal-img" id="fullsizeImg" src="" alt="大图预览">
+    </div>
+
+    <!-- 学院3张图片展示 -->
+    <div class="college-img-group">
+      <div class="college-img-item">
+        <img src="../assets/images/college/lab-equipment.jpg" alt="福州大学计算机与大数据学院教学楼" class="college-img">
+        <p class="img-desc">重点实验室</p>
+      </div>
+      <div class="college-img-item">
+        <img src="../assets/images/college/college-building.jpg" alt="福州大学计算机与大数据学院实验室" class="college-img">
+        <p class="img-desc">学院教学楼</p>
+      </div>
+      <div class="college-img-item">
+        <img src="../assets/images/college/teacher-lab.jpg" alt="福州大学计算机与大数据学院科研团队" class="college-img">
+        <p class="img-desc">科研团队风采</p>
+      </div>
+    </div>
+
     <!-- 教师风采板块 -->
     <section id="teachers" class="teacher-section">
       <h2 class="section-title">教师风采</h2>
@@ -76,7 +98,7 @@
       </div>
     </section>
 
-    <!-- 实验室介绍板块（包含红色科研项目） -->
+    <!-- 实验室介绍板块 -->
     <section id="labs" class="lab-section">
       <h2 class="section-title">重点实验室及科研项目</h2>
       <div class="lab-list">
@@ -101,7 +123,7 @@
     <a href="homepage.html" class="back-btn">返回总首页</a>
   </div>
 
-  <!-- 教师详情弹窗（仅结构） -->
+  <!-- 教师详情弹窗 -->
   <div id="teacherModal" class="modal">
     <div class="modal-content">
       <span class="close-btn">&times;</span>
@@ -109,9 +131,8 @@
     </div>
   </div>
 
-  <!-- 引入JS文件（按执行顺序） -->
+  <!-- 引入整合后的JS文件 -->
   <script src="../js/common.js"></script>
-  <script src="../js/nav-scroll.js"></script>
-  <script src="../js/teacher-detail.js"></script>
+  <script src="../js/college.js"></script>
 </body>
 </html>

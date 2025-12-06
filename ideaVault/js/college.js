@@ -1,6 +1,59 @@
-// 教师详情核心逻辑（依赖DOM加载完成）
+// 1. 导航锚点平滑滚动 + 激活态切换（原nav-scroll.js）
 document.addEventListener('DOMContentLoaded', function() {
-  // 1. 教师详细信息数据
+  document.querySelectorAll('.nav-link[href^="#"]').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href');
+      // 处理首页锚点（#）
+      if (targetId === '#') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        document.querySelector(targetId).scrollIntoView({
+          behavior: 'smooth'
+        });
+      }
+      // 更新导航激活态
+      document.querySelectorAll('.nav-link').forEach(nav => nav.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+});
+
+// 2. 图片预览功能（原html内嵌JS）
+document.addEventListener('DOMContentLoaded', function() {
+  // 获取元素
+  const imageModal = document.getElementById('imageModal');
+  const fullsizeImg = document.getElementById('fullsizeImg');
+  const collegeImages = document.querySelectorAll('.college-img');
+  const closeBtn = imageModal.querySelector('.close-btn');
+
+  // 点击图片打开预览
+  collegeImages.forEach(img => {
+    img.addEventListener('click', function() {
+      imageModal.style.display = 'block';
+      fullsizeImg.src = this.src; // 显示原图
+      document.body.style.overflow = 'hidden'; // 防止背景滚动
+    });
+  });
+
+  // 关闭预览
+  closeBtn.addEventListener('click', function() {
+    imageModal.style.display = 'none';
+    document.body.style.overflow = ''; // 恢复滚动
+  });
+
+  // 点击模态框背景关闭
+  imageModal.addEventListener('click', function(e) {
+    if (e.target === imageModal) {
+      imageModal.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+  });
+});
+
+// 3. 教师详情核心逻辑（原teacher-detail.js）
+document.addEventListener('DOMContentLoaded', function() {
+  // 教师详细信息数据
   const teacherDetails = {
     '陈光永 教授': {
       title: '陈光永 教授',
@@ -17,7 +70,6 @@ document.addEventListener('DOMContentLoaded', function() {
       bio: '陈光永，1989年生，男，博士，研究员/博士生导师，福建省优青、福建省高层次人才、福州大学旗山学者。主要研究方向为：计算机视觉、智能医学图像分析、机器学习优化方法、系统辨识等'
     },
 
-   
     '姚仰光 博士': {
       title: '姚仰光 博士',
       position: '计算机科学教学中心副主任。',
@@ -59,12 +111,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   };
 
-  // 2. 获取DOM元素
+  // 获取DOM元素
   const modal = document.getElementById('teacherModal');
   const teacherDetail = document.getElementById('teacherDetail');
-  const closeBtn = document.querySelector('.close-btn');
-
-  // 3. 绑定教师卡片点击事件
+  const closeBtn = document.getElementById('teacherModal').querySelector('.close-btn');
+  // 绑定教师卡片点击事件
   document.querySelectorAll('.teacher-item').forEach(item => {
     item.addEventListener('click', function() {
       const name = this.querySelector('.teacher-name').textContent;
@@ -97,19 +148,19 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // 4. 关闭弹窗（按钮）
+  // 关闭弹窗（按钮）
   closeBtn.addEventListener('click', () => {
     modal.style.display = 'none';
   });
 
-  // 5. 点击弹窗外部关闭
+  // 点击弹窗外部关闭
   window.addEventListener('click', (e) => {
     if (e.target === modal) {
       modal.style.display = 'none';
     }
   });
 
-  // 6. 键盘ESC关闭弹窗（增强体验）
+  // 键盘ESC关闭弹窗（增强体验）
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && modal.style.display === 'block') {
       modal.style.display = 'none';

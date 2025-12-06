@@ -12,12 +12,10 @@ ideaVault/           # 小组名
 ├── css/             # 通用样式+各模块样式
 │   ├── common.css   # 全局样式
 │   ├── timeline.css # 时间轴样式
-│   ├── map.css      # 打卡点样式
 │   └── college.css  # 学院简介样式
 ├── js/              # 通用脚本+各模块脚本
 │   ├── common.js    # 通用组件
 │   ├── timeline.js  # 时间轴交互
-│   ├── map.js       # 打卡点交互
 │   └── college.js   # 学院简介交互
 ├── pages/           # 所有页面入口
 │   ├── history.html # 校史馆页面
