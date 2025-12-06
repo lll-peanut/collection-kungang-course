@@ -13,14 +13,18 @@ ideaVault/           # 小组名
 │   ├── common.css   # 全局样式
 │   ├── timeline.css # 时间轴样式
 │   └── college.css  # 学院简介样式
+│   └── lab-detail.css #重点实验室样式
 ├── js/              # 通用脚本+各模块脚本
 │   ├── common.js    # 通用组件
 │   ├── timeline.js  # 时间轴交互
 │   └── college.js   # 学院简介交互
+│   └── lab-data.js  # 实验室信息
+│   └── lab-script.js# 实验室交互
 ├── pages/           # 所有页面入口
 │   ├── history.html # 校史馆页面
 │   ├── checkin.html # 校园打卡点页面
 │   └── college.html # 学院简介页面
+│   └── lab.html     # 实验室简介样式
 └── README.md        # 项目说明
 ~~~
 

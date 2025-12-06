@@ -135,14 +135,17 @@
   line-height: 1.6;
 }
 
-/* 实验室板块样式 */
+/* 实验室预览板块样式（更新） */
 .lab-section {
   margin: 40px 0;
+  padding: 20px;
+  background-color: var(--fd-blue-light);
+  border-radius: 8px;
 }
 .lab-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
+  gap: 25px;
 }
 .lab-item {
   padding: 20px;
@@ -150,22 +153,54 @@
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   border-top: 3px solid var(--fd-blue);
+  transition: transform 0.3s ease;
+}
+.lab-item:hover {
+  transform: translateY(-5px);
 }
 .lab-title {
   color: var(--fd-blue);
   font-weight: 700;
   margin-bottom: 10px;
   font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.lab-title::before {
+  content: "🔬";
+  font-size: 1.2rem;
 }
 .lab-desc {
   color: #666;
   line-height: 1.6;
   margin-bottom: 10px;
 }
-/* 实验室重点项目文字样式 */
-.lab-desc strong {
-  color: var(--fd-red);
-  margin-right: 4px;
+.lab-desc i {
+  color: var(--fd-blue);
+  margin-right: 5px;
+}
+
+/* 实验室跳转按钮样式（新增） */
+.lab-more-btn {
+  display: inline-block;
+  margin: 30px 0 10px;
+  padding: 10px 25px;
+  background: var(--fd-blue);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.lab-more-btn:hover {
+  background: #004488;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+.lab-more-btn i {
+  margin-left: 8px;
 }
 
 /* 返回按钮样式 */
@@ -205,7 +240,6 @@
   position: relative;
   animation: modalOpen 0.3s;
 }
-/* 弹窗打开动画 */
 @keyframes modalOpen {
   from {opacity: 0; transform: translateY(-50px);}
   to {opacity: 1; transform: translateY(0);}
@@ -222,7 +256,6 @@
 .close-btn:hover {
   color: #000;
 }
-/* 教师详情内容样式 */
 .teacher-detail h3 {
   color: var(--fd-red);
   margin-bottom: 15px;
@@ -260,46 +293,34 @@
   color: #555;
 }
 
-/* 3张图片的容器 */
+/* 学院图片展示样式 */
 .college-img-group {
   margin: 20px 0;
   display: flex;
-  flex-wrap: wrap; /* 移动端自动换行 */
-  gap: 20px; /* 图片间距 */
-  justify-content: center; /* 整体居中 */
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
 }
-
-/* 单张图片项 */
 .college-img-item {
   flex: 1;
-  min-width: 280px; /* 移动端最小宽度，避免过窄 */
+  min-width: 280px;
   text-align: center;
 }
-
-/* 图片样式（大小为原尺寸1/2） */
 .college-img {
-  max-width: 100%; /* 核心：大小减小1/2 */
-  height: auto; /* 保持宽高比，防止变形 */
+  max-width: 100%;
+  height: auto;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: transform 0.2s;
 }
-
-/* 图片描述文字 */
+.college-img:hover {
+  transform: scale(1.02);
+}
 .img-desc {
   margin-top: 8px;
   color: #666;
   font-size: 14px;
-}
-
-/* 移动端适配（屏幕小于768px时） */
-@media (max-width: 768px) {
-  .college-img-group {
-    flex-direction: column; /* 移动端改为纵向排列 */
-    gap: 15px;
-  }
-  .college-img {
-    max-width: 80%; /* 移动端图片适当放大，提升观感 */
-  }
 }
 
 /* 图片预览模态框样式 */
@@ -311,11 +332,10 @@
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.9);
-  z-index: 1001; /* 确保在其他模态框上方 */
+  z-index: 1001;
   padding: 40px;
   box-sizing: border-box;
 }
-
 .modal-img {
   display: block;
   margin: 0 auto;
@@ -325,12 +345,34 @@
   animation: modalOpen 0.3s;
 }
 
-/* 确保点击图片时有指针提示 */
-.college-img {
-  cursor: pointer;
-  transition: transform 0.2s;
+/* 移动端适配 */
+@media (max-width: 768px) {
+  .college-img-group {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .college-img {
+    max-width: 80%;
+  }
+  .lab-list {
+    grid-template-columns: 1fr;
+  }
+  .teacher-list {
+    grid-template-columns: 1fr 1fr;
+  }
+  .modal-content {
+    width: 90%;
+    padding: 20px;
+  }
 }
-
-.college-img:hover {
-  transform: scale(1.02);
+@media (max-width: 480px) {
+  .teacher-list {
+    grid-template-columns: 1fr;
+  }
+  .stat-item {
+    min-width: 120px;
+  }
+  .page-title {
+    font-size: 1.5rem;
+  }
 }
