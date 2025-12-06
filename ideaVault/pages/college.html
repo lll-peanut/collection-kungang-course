@@ -3,127 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>福州大学XX学院 - 学院简介</title>
+  <title>福州大学计算机与大数据学院 - 学院简介</title>
+  <!-- 仅引入基础样式 + 整合后的学院样式 -->
   <link rel="stylesheet" href="../css/common.css">
-  <style>
-    /* 导航栏 */
-    .college-nav {
-      background: var(--fd-blue);
-      padding: 15px 0;
-      margin-bottom: 30px;
-    }
-    .nav-list {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      list-style: none;
-    }
-    .nav-item {
-      margin: 0 15px;
-    }
-    .nav-link {
-      color: #fff;
-      text-decoration: none;
-      font-size: 1rem;
-      padding: 5px 10px;
-      border-radius: 4px;
-      transition: all 0.3s ease;
-    }
-    .nav-link:hover, .nav-link.active {
-      background: var(--fd-red);
-    }
-
-    /* 教师风采 */
-    .teacher-section, .lab-section {
-      margin: 40px 0;
-    }
-    .section-title {
-      color: var(--fd-red);
-      font-size: 1.5rem;
-      margin-bottom: 20px;
-      border-left: 4px solid var(--fd-red);
-      padding-left: 10px;
-    }
-    .teacher-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-    }
-    .teacher-item {
-      text-align: center;
-      padding: 15px;
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    }
-    .teacher-avatar {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      margin: 0 auto 10px;
-      background: var(--fd-light-red);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--fd-red);
-      font-size: 2rem;
-    }
-    .teacher-name {
-      font-weight: 700;
-      margin-bottom: 5px;
-    }
-    .teacher-desc {
-      color: #666;
-      font-size: 0.9rem;
-    }
-
-    /* 实验室介绍 */
-    .lab-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-    }
-    .lab-item {
-      padding: 20px;
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      border-top: 3px solid var(--fd-blue);
-    }
-    .lab-title {
-      color: var(--fd-blue);
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-    .lab-desc {
-      color: #666;
-      line-height: 1.6;
-    }
-
-    /* 返回按钮 */
-    .back-btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 8px 20px;
-      background: var(--fd-red);
-      color: #fff;
-      text-decoration: none;
-      border-radius: 4px;
-    }
-    .back-btn:hover {
-      background: #A80E25;
-    }
-
-    /* 移动端适配 */
-    @media (max-width: 768px) {
-      .nav-item {
-        margin: 5px 10px;
-      }
-      .section-title {
-        font-size: 1.3rem;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="../css/college.css">
 </head>
 <body>
   <!-- 学院导航栏 -->
@@ -131,50 +14,107 @@
     <div class="container">
       <ul class="nav-list">
         <li class="nav-item"><a href="#" class="nav-link active">首页</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">教师风采</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">实验室</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">红色科研</a></li>
-        <li class="nav-item"><a href="index.html" class="nav-link">返回总首页</a></li>
+        <li class="nav-item"><a href="#teachers" class="nav-link">教师风采</a></li>
+        <li class="nav-item"><a href="#labs" class="nav-link">实验室</a></li>
+        <li class="nav-item"><a href="homepage.html" class="nav-link">返回总首页</a></li>
       </ul>
     </div>
   </nav>
 
   <div class="container">
-    <h1 class="page-title">福州大学XX学院 简介</h1>
+    <h1 class="page-title">福州大学计算机与大数据学院 简介</h1>
 
-    <!-- 教师风采板块（成员4完善） -->
-    <section class="teacher-section">
+    <!-- 学院简介 -->
+    <div class="college-intro">
+      <p>福州大学计算机与大数据学院秉承“明德至诚，博学远志”的校训精神，历史积淀深厚，其发展源头可追溯至1977年的计算机技术专业，1984年成立计算机科学与技术系，2003年组建计算机学院，2018年整合为现院。学院为国家培育出众多优秀人才，已成为信息技术领域的重要阵地。学科实力强劲，拥有计算机科学与技术一级学科博士点，计算机科学为ESI全球前4.42‰学科，计算机科学与技术专业是国家一流本科专业建设点。师资队伍含国家“百千万人才工程”人选等高层次人才，形成完善的本-硕-博培养体系。科研成果丰硕，近五年主持国家自然科学基金50余项，获省部级科技奖12项，超算团队构建医疗领域大模型并屡获ASC竞赛一等奖，彰显“科技报国”担当。</p>
+    </div>
+
+    <!-- 学院数据统计 -->
+    <div class="college-stat">
+      <div class="stat-item">
+        <div class="stat-number">100+</div>
+        <div class="stat-label">专任教师</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">3000+</div>
+        <div class="stat-label">在读学生</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">300+</div>
+        <div class="stat-label">省部级以上科研项目</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">1</div>
+        <div class="stat-label">国家级一流本科专业</div>
+      </div>
+    </div>
+
+    <!-- 图片预览模态框 -->
+    <div id="imageModal" class="modal">
+      <span class="close-btn">&times;</span>
+      <img class="modal-img" id="fullsizeImg" src="" alt="大图预览">
+    </div>
+
+    <!-- 学院3张图片展示 -->
+    <div class="college-img-group">
+      <div class="college-img-item">
+        <img src="../assets/images/college/lab-equipment.jpg" alt="福州大学计算机与大数据学院教学楼" class="college-img">
+        <p class="img-desc">重点实验室</p>
+      </div>
+      <div class="college-img-item">
+        <img src="../assets/images/college/college-building.jpg" alt="福州大学计算机与大数据学院实验室" class="college-img">
+        <p class="img-desc">学院教学楼</p>
+      </div>
+      <div class="college-img-item">
+        <img src="../assets/images/college/teacher-lab.jpg" alt="福州大学计算机与大数据学院科研团队" class="college-img">
+        <p class="img-desc">科研团队风采</p>
+      </div>
+    </div>
+
+    <!-- 教师风采板块 -->
+    <section id="teachers" class="teacher-section">
       <h2 class="section-title">教师风采</h2>
       <div class="teacher-list">
         <div class="teacher-item">
           <div class="teacher-avatar">👨‍🏫</div>
-          <h3 class="teacher-name">李教授</h3>
-          <p class="teacher-desc">红色科研带头人，专注于国家战略领域研究</p>
-        </div>
-        <div class="teacher-item">
-          <div class="teacher-avatar">👩‍🏫</div>
-          <h3 class="teacher-name">王老师</h3>
-          <p class="teacher-desc">思政教育名师，深耕红色校史与课程融合</p>
+          <h3 class="teacher-name">陈光永 教授</h3>
+          <p class="teacher-desc">研究生/博士生导师，福建省优青，福建省高层次人才，福州大学旗山学者</p>
         </div>
         <div class="teacher-item">
           <div class="teacher-avatar">👨‍🏫</div>
-          <h3 class="teacher-name">张副教授</h3>
-          <p class="teacher-desc">实验室核心骨干，主持多项红色科研项目</p>
+          <h3 class="teacher-name">姚仰光 博士</h3>
+          <p class="teacher-desc">计算机科学教学中心副主任，讲师</p>
+        </div>
+        <div class="teacher-item">
+          <div class="teacher-avatar">👩‍🏫</div>
+          <h3 class="teacher-name">詹青青 硕士</h3>
+          <p class="teacher-desc">计算机科学学院研究生导师，讲师</p>
+        </div>
+        <div class="teacher-item">
+          <div class="teacher-avatar">👨‍🏫</div>
+          <h3 class="teacher-name">陈飞 教授</h3>
+          <p class="teacher-desc">福州大学计算机与大数据学院实验教学中心主任，网络信息安全与计算机技术国家级实验教学示范中心副主任</p>
         </div>
       </div>
     </section>
 
-    <!-- 实验室介绍板块（成员5完善） -->
-    <section class="lab-section">
-      <h2 class="section-title">重点实验室</h2>
+    <!-- 实验室介绍板块 -->
+    <section id="labs" class="lab-section">
+      <h2 class="section-title">重点实验室及科研项目</h2>
       <div class="lab-list">
         <div class="lab-item">
           <h3 class="lab-title">红色智能技术实验室</h3>
-          <p class="lab-desc">聚焦红色文化数字化传播，研发校史数字展馆、红色VR等技术，服务校园红色教育。</p>
+          <p class="lab-desc">聚焦红色文化数字化传播，研发校史数字展馆、红色VR等技术，服务校园红色教育。代表成果包括福大校史时光隧道3D建模系统、红色故事智能推送平台。</p>
+          <p class="lab-desc"><strong>重点项目：</strong>红色校史数字孪生系统 - 基于3D建模与物联网技术，构建校史场景数字孪生体，实现红色历史场景沉浸式再现，获福建省科技进步奖。</p>
         </div>
         <div class="lab-item">
-          <h3 class="lab-title">先进材料实验室</h3>
-          <p class="lab-desc">围绕国家重大需求开展科研，团队获多项省级以上奖项，传承求是报国的红色科研精神。</p>
+          <h3 class="lab-title">大数据安全与隐私保护实验室</h3>
+          <p class="lab-desc">围绕国家网络空间安全战略需求，研究数据安全防护技术，团队承担多项国防科技项目，传承"科技报国"红色科研精神。</p>
+        </div>
+        <div class="lab-item">
+          <h3 class="lab-title">智能计算与决策实验室</h3>
+          <p class="lab-desc">将人工智能技术应用于红色资源挖掘与分析，开发革命史料智能分类系统，助力红色文化遗产保护与传承。</p>
+          <p class="lab-desc"><strong>重点项目：</strong>革命精神传承大数据平台 - 整合福建省革命史料与校史资源，建立红色精神图谱，为思政教育提供数据支撑，服务全省高校。</p>
         </div>
       </div>
     </section>
@@ -182,6 +122,17 @@
     <!-- 返回首页 -->
     <a href="homepage.html" class="back-btn">返回总首页</a>
   </div>
+
+  <!-- 教师详情弹窗 -->
+  <div id="teacherModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <div id="teacherDetail"></div>
+    </div>
+  </div>
+
+  <!-- 引入整合后的JS文件 -->
   <script src="../js/common.js"></script>
+  <script src="../js/college.js"></script>
 </body>
 </html>
