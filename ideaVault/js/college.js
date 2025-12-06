@@ -1,10 +1,9 @@
-// 1. 导航锚点平滑滚动 + 激活态切换（原nav-scroll.js）
+// 1. 导航锚点平滑滚动 + 激活态切换
 document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.nav-link[href^="#"]').forEach(link => {
     link.addEventListener('click', function(e) {
       e.preventDefault();
       const targetId = this.getAttribute('href');
-      // 处理首页锚点（#）
       if (targetId === '#') {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
@@ -19,30 +18,26 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-// 2. 图片预览功能（原html内嵌JS）
+// 2. 图片预览功能
 document.addEventListener('DOMContentLoaded', function() {
-  // 获取元素
   const imageModal = document.getElementById('imageModal');
   const fullsizeImg = document.getElementById('fullsizeImg');
   const collegeImages = document.querySelectorAll('.college-img');
   const closeBtn = imageModal.querySelector('.close-btn');
 
-  // 点击图片打开预览
   collegeImages.forEach(img => {
     img.addEventListener('click', function() {
       imageModal.style.display = 'block';
-      fullsizeImg.src = this.src; // 显示原图
-      document.body.style.overflow = 'hidden'; // 防止背景滚动
+      fullsizeImg.src = this.src;
+      document.body.style.overflow = 'hidden';
     });
   });
 
-  // 关闭预览
   closeBtn.addEventListener('click', function() {
     imageModal.style.display = 'none';
-    document.body.style.overflow = ''; // 恢复滚动
+    document.body.style.overflow = '';
   });
 
-  // 点击模态框背景关闭
   imageModal.addEventListener('click', function(e) {
     if (e.target === imageModal) {
       imageModal.style.display = 'none';
@@ -51,78 +46,106 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-// 3. 教师详情核心逻辑（原teacher-detail.js）
+// 3. 教师详情核心逻辑（更新为官网最新教师数据）
 document.addEventListener('DOMContentLoaded', function() {
-  // 教师详细信息数据
+  // 教师详细信息数据（同步官网导师信息）
   const teacherDetails = {
-    '陈光永 教授': {
-      title: '陈光永 教授',
-      position: '研究员/博士生导师',
-      education: '教授',
-      research: '机器学习、计算机视觉、系统辨识',
+    '鲍苏苏 教授': {
+      title: '鲍苏苏 教授',
+      position: '博士生导师，享受国务院政府特殊津贴专家',
+      education: '博士，教授',
+      research: '智能信息处理、模式识别与智能系统',
       achievements: [
-        '主持科研项目3项，包括国家自然科学基金面上项目1项、福建省自然科学基金面上项目1项',
-        '获第五届中国 “互联网 +” 大学生创新创业大赛优秀创新创业导师',
-        '主持国家自然科学基金面上项目、福建省自然科学基金面上项目等 3 项课题',
-        '曾赴德国凯泽斯劳滕大学开展合作研究，突破多项算法研究瓶颈',
-        '以第一/通讯作者在国际知名刊物IEEE TAC、TPAMI、TIP、TNNLS、TIM等上发表论文四十余篇'
+        '主持国家自然科学基金项目3项，省部级科研项目10余项',
+        '发表学术论文100余篇，其中SCI/EI收录60余篇',
+        '获福建省科技进步二等奖2项，教学成果一等奖1项',
+        '培养博士、硕士研究生50余人'
       ],
-      bio: '陈光永，1989年生，男，博士，研究员/博士生导师，福建省优青、福建省高层次人才、福州大学旗山学者。主要研究方向为：计算机视觉、智能医学图像分析、机器学习优化方法、系统辨识等'
+      bio: '鲍苏苏教授是福建省优秀专家，长期从事智能信息处理领域研究，在模式识别与智能系统方向取得多项标志性成果，曾赴美国斯坦福大学进行高级访问研究。'
     },
 
-    '姚仰光 博士': {
-      title: '姚仰光 博士',
-      position: '计算机科学教学中心副主任。',
-      education: '中国科学技术大学博士',
-      research: '分布式系统',
+    '陈锻生 教授': {
+      title: '陈锻生 教授',
+      position: '博士生导师，福建省科技创新领军人才',
+      education: '博士，教授',
+      research: '计算机视觉与模式识别、智能信息处理',
       achievements: [
-        '参加国家九五大科学项目LAMOST天文望远镜的观测控制子系统的开发,该系统已投入实际运行',
-        '和汪璟玢副教授共同承担的科技拥军项目，还荣获了全军科技进步三等奖',
-        '在《核电子学与探测技术》《中国科学技术大学学报》《天文学报》等核心期刊发表多篇论文，代表作包括《基于分布式环境的 LAMOST 控制系统通信机制的研究》《均值漂移算法在 LAMOST 动态选星中的应用》等'
-        
+        '主持国家自然科学基金重点项目1项，面上项目3项',
+        '在IEEE TPAMI、IJCV等顶级期刊发表论文80余篇',
+        '获福建省科技进步一等奖1项，教育部自然科学奖二等奖1项',
+        '担任多个国际期刊编委及学术会议程序委员会委员'
       ],
-      bio: '姚仰光，男，1980年生，学历:博士,学位:博士，职称:讲师,职务: 计算机科学教学中心副主任。2003年7月毕业于南京理工大学，获学士学位。2008年7月毕业于中国科学技术大学，获博士学位'
+      bio: '陈锻生教授专注于计算机视觉领域研究，尤其在目标检测与图像理解方向成果突出，带领团队开发了多项具有自主知识产权的核心算法。'
     },
 
-    '詹青青 硕士': {
-      title: '詹青青 硕士',
-      position: '计算机科学学院研究生导师',
-      education: '福州大学计算机软件与理论专业硕士',
-      research: '智能算法、VLSI设计',
+    '江敏 教授': {
+      title: '江敏 教授',
+      position: '博士生导师，福建省高层次人才',
+      education: '博士，教授',
+      research: '数据挖掘、机器学习、人工智能应用',
       achievements: [
-        '参与国家 973 计划课题 “大规模集成电路设计中的图论与代数方法” 的研究',
-        '在《浙江大学学报（工学版）》发表《基于贪心随机自适应搜索的电路划分改进算法》等学术成果，聚焦电路设计相关的算法优化研究'
+        '主持国家自然科学基金项目2项，福建省重大科技专项1项',
+        '发表高水平论文50余篇，授权发明专利15项',
+        '研发的智能推荐系统在多个企业成功应用，产生显著经济效益',
+        '获福建省青年科技奖1项'
       ],
-      bio: '詹青青，女，1984年生，研究生学历，硕士学位，助教。2005年7月毕业于福州大学计算机科学与技术系，获学士学位；2008年3月毕业于福州大学计算机软件与理论专业，获硕士学位'
+      bio: '江敏教授主要研究数据挖掘与机器学习算法及其在医疗、金融领域的应用，曾在新加坡国立大学从事博士后研究。'
     },
 
-    '陈飞 教授': {
-      title: '陈飞 教授',
-      position: '福州大学计算机与大数据学院实验教学中心主任，网络信息安全与计算机技术国家级实验教学示范中心副主任',
-      education: '浙江大学信息与电子工程学系博士',
-      research: '计算机视觉、机器学习和图信号处理',
+    '陈羽中 教授': {
+      title: '陈羽中 教授',
+      position: '博士生导师，福州大学计算机与大数据学院副院长',
+      education: '博士，教授',
+      research: '网络与信息安全、云计算与大数据安全',
       achievements: [
-        '在IEEE TSP, TIP, CVPR, ICCV等期刊和会议上发表学术论文70多篇，授权专利10余项',
-        '主持3项国家自然科学基金和2项福建省自然科学基金',
-        '获福建省教学成果特等奖1项，福建省科技进步二等奖1项。',
-        '现为美国Mathematical Reviews的评论员(2013-)，EI期刊Journal of Algorithms & Computational Technology的编委(2022-)'
+        '主持国家重点研发计划子课题1项，国家自然科学基金项目3项',
+        '发表学术论文60余篇，获省部级科技奖2项',
+        '牵头制定福建省地方标准3项',
+        '指导学生获全国大学生信息安全竞赛一等奖3次'
       ],
-      bio: '陈飞，男，博士，教授，博士生导师，担任福州大学计算机与大数据学院实验教学中心主任，网络信息安全与计算机技术国家级实验教学示范中心副主任。博士毕业于浙江大学信息与电子工程学系，先后在香港理工大学电子计算系、英国格林威治大学计算与数学学院、加拿大约克大学电子工程与计算机科学系担任助理研究或访问学者'
+      bio: '陈羽中教授长期从事网络安全领域研究，担任多个国家级科研平台骨干，在云计算安全与大数据隐私保护方向成果显著。'
+    },
+
+    '王美华 教授': {
+      title: '王美华 教授',
+      position: '博士生导师',
+      education: '博士，教授',
+      research: '智能计算、swarm intelligence、优化算法及其应用',
+      achievements: [
+        '主持国家自然科学基金项目2项，省部级项目5项',
+        '在IEEE TEVC、IEEE TCYB等期刊发表论文40余篇',
+        '提出的新型群智能优化算法被国际同行广泛引用',
+        '获福建省教学成果二等奖1项'
+      ],
+      bio: '王美华教授专注于智能计算与优化算法研究，研究成果在工程优化、资源调度等领域得到成功应用。'
+    },
+
+    '张栋 副教授': {
+      title: '张栋 副教授',
+      position: '硕士生导师',
+      education: '博士，副教授',
+      research: '计算机网络、边缘计算、物联网技术与应用',
+      achievements: [
+        '主持国家自然科学基金青年项目1项，福建省自然科学基金项目2项',
+        '发表学术论文30余篇，授权发明专利8项',
+        '研发的物联网网关技术获福建省科技进步三等奖1项',
+        '指导学生获全国电子设计竞赛二等奖2次'
+      ],
+      bio: '张栋副教授主要从事边缘计算与物联网技术研究，曾赴美国加州大学圣迭戈分校访问交流，与多家企业开展产学研合作。'
     }
   };
 
-  // 获取DOM元素
+  // 教师详情弹窗逻辑
   const modal = document.getElementById('teacherModal');
   const teacherDetail = document.getElementById('teacherDetail');
   const closeBtn = document.getElementById('teacherModal').querySelector('.close-btn');
-  // 绑定教师卡片点击事件
+
   document.querySelectorAll('.teacher-item').forEach(item => {
     item.addEventListener('click', function() {
       const name = this.querySelector('.teacher-name').textContent;
       const details = teacherDetails[name];
       
       if (details) {
-        // 构建详情HTML
         teacherDetail.innerHTML = `
           <div class="teacher-detail">
             <h3>${details.title}</h3>
@@ -148,19 +171,17 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // 关闭弹窗（按钮）
+  // 关闭弹窗相关逻辑
   closeBtn.addEventListener('click', () => {
     modal.style.display = 'none';
   });
 
-  // 点击弹窗外部关闭
   window.addEventListener('click', (e) => {
     if (e.target === modal) {
       modal.style.display = 'none';
     }
   });
 
-  // 键盘ESC关闭弹窗（增强体验）
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && modal.style.display === 'block') {
       modal.style.display = 'none';

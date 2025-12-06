@@ -1,0 +1,654 @@
+/* 全局样式重置与基础配置 */
+:root {
+    --primary-color: #2563eb; /* 主色调：蓝色（专业、科技感） */
+    --primary-light: #3b82f6;
+    --primary-dark: #1d4ed8;
+    --secondary-color: #f3f4f6; /* 辅助色：浅灰（背景） */
+    --text-primary: #1f2937; /* 主文本色 */
+    --text-secondary: #6b7280; /* 次要文本色 */
+    --text-light: #9ca3af; /* 浅色文本 */
+    --success-color: #10b981; /* 成功色：绿色 */
+    --border-color: #e5e7eb; /* 边框色 */
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 6px rgba(0,0,0,0.08);
+    --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+    --radius-sm: 6px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --transition: all 0.3s ease;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Inter", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background-color: #f9fafb;
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+/* 新增：line-clamp 兼容性工具类（全浏览器适配） */
+.line-clamp-2 {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-box;
+    display: box;
+    -webkit-line-clamp: 2;
+    -moz-line-clamp: 2;
+    -ms-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    -ms-box-orient: vertical;
+    box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+}
+
+.line-clamp-3 {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-box;
+    display: box;
+    -webkit-line-clamp: 3;
+    -moz-line-clamp: 3;
+    -ms-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    -ms-box-orient: vertical;
+    box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+}
+
+/* 简化导航样式 */
+.lab-nav {
+    width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+.back-to-college {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background-color: white;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
+}
+
+.back-to-college:hover {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow-md);
+}
+
+.back-to-college i {
+    font-size: 16px;
+}
+
+/* 实验室主容器样式 */
+.lab-container {
+    width: 1200px;
+    margin: 0 auto 60px;
+    padding: 30px;
+    background-color: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+/* 头部标题样式 */
+.lab-header {
+    margin-bottom: 35px;
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.lab-header h2 {
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+}
+
+.lab-header p {
+    font-size: 15px;
+    color: var(--text-secondary);
+    max-width: 900px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* 内容区域布局 */
+.lab-content {
+    display: flex;
+    gap: 25px;
+}
+
+/* 左侧筛选栏样式 */
+.lab-filter {
+    width: 280px;
+    background-color: var(--secondary-color);
+    border-radius: var(--radius-md);
+    padding: 25px;
+    box-shadow: var(--shadow-sm);
+}
+
+.lab-filter h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.filter-list {
+    list-style: none;
+}
+
+.filter-item {
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: 15px;
+    color: var(--text-secondary);
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.filter-item::before {
+    content: "";
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: var(--text-light);
+    transition: var(--transition);
+}
+
+.filter-item:hover {
+    background-color: white;
+    color: var(--primary-color);
+    box-shadow: var(--shadow-sm);
+}
+
+.filter-item:hover::before {
+    background-color: var(--primary-color);
+}
+
+.filter-item.active {
+    background-color: var(--primary-color);
+    color: white;
+    box-shadow: var(--shadow-md);
+}
+
+.filter-item.active::before {
+    background-color: white;
+}
+
+/* 右侧实验室列表样式 */
+.lab-list {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+}
+
+.lab-card-placeholder {
+    width: 100%;
+    height: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-light);
+    font-size: 16px;
+    background-color: var(--secondary-color);
+    border-radius: var(--radius-md);
+    border: 1px dashed var(--border-color);
+    transition: var(--transition);
+}
+
+.lab-card-placeholder i {
+    font-size: 48px;
+    margin-bottom: 16px;
+    color: var(--text-light);
+}
+
+.lab-card-placeholder:hover {
+    background-color: #f0f1f3;
+}
+
+/* 实验室卡片样式（核心优化+line-clamp兼容） */
+.lab-card {
+    background-color: white;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    transition: var(--transition);
+    cursor: pointer;
+    border: 1px solid var(--border-color);
+}
+
+.lab-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+    border-color: transparent;
+}
+
+.lab-card-header {
+    padding: 22px 24px;
+    background-color: var(--secondary-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.lab-card-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 10px 0;
+    line-height: 1.4;
+    /* 标题最多2行，全浏览器兼容 */
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-box;
+    display: box;
+    -webkit-line-clamp: 2;
+    -moz-line-clamp: 2;
+    -ms-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    -ms-box-orient: vertical;
+    box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+}
+
+.lab-card-category {
+    display: inline-block;
+    padding: 6px 12px;
+    background-color: rgba(37, 99, 235, 0.1);
+    color: var(--primary-color);
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 20px;
+    text-transform: capitalize;
+}
+
+.lab-card-body {
+    padding: 24px;
+}
+
+.lab-card-info {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    line-height: 1.7;
+    /* 研究方向最多3行，全浏览器兼容 */
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-box;
+    display: box;
+    -webkit-line-clamp: 3;
+    -moz-line-clamp: 3;
+    -ms-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    -ms-box-orient: vertical;
+    box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+}
+
+.lab-card-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 0 24px 24px;
+    font-size: 14px;
+}
+
+.lab-card-contact, .lab-card-location {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-secondary);
+}
+
+.lab-card-contact i, .lab-card-location i {
+    color: var(--primary-color);
+    font-size: 15px;
+    width: 16px;
+    text-align: center;
+}
+
+.lab-card-contact {
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+/* 弹窗样式（全面优化） */
+.lab-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+}
+
+.lab-modal-content {
+    background-color: white;
+    width: 90%;
+    max-width: 900px;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: modalFadeIn 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.lab-close {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    font-size: 24px;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: var(--transition);
+    z-index: 10;
+}
+
+.lab-close:hover {
+    color: var(--text-primary);
+    transform: rotate(90deg);
+}
+
+.lab-modal-header {
+    padding: 28px 32px;
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--secondary-color);
+}
+
+.lab-modal-header h3 {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+    line-height: 1.4;
+}
+
+.lab-category-tag {
+    display: inline-block;
+    margin-left: 12px;
+    padding: 8px 16px;
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 20px;
+    text-transform: capitalize;
+}
+
+.lab-modal-body {
+    padding: 32px;
+}
+
+.lab-modal-basic {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.lab-basic-item {
+    font-size: 15px;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.lab-basic-item i {
+    color: var(--primary-color);
+    font-size: 18px;
+    width: 20px;
+    text-align: center;
+}
+
+.lab-basic-item .item-label {
+    font-weight: 500;
+    color: var(--text-primary);
+    min-width: 60px;
+}
+
+.lab-basic-item a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.lab-basic-item a:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
+}
+
+.lab-modal-intro, .lab-modal-achievement {
+    margin-bottom: 32px;
+}
+
+.lab-modal-intro h4, .lab-modal-achievement h4 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.lab-modal-intro h4::after, .lab-modal-achievement h4::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background-color: var(--border-color);
+}
+
+.lab-modal-intro p, .lab-modal-achievement p {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin: 0;
+    text-align: justify;
+    /* 弹窗文本换行优化 */
+    white-space: pre-line;
+    word-break: break-word;
+}
+
+.lab-achievement-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: var(--transition);
+    padding: 8px 16px;
+    border: 1px solid var(--primary-color);
+    border-radius: var(--radius-sm);
+}
+
+.lab-achievement-link:hover {
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    box-shadow: var(--shadow-md);
+}
+
+.lab-achievement-link i {
+    font-size: 14px;
+}
+
+/* IE 浏览器降级处理（可选，兼容IE11） */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    .lab-card-title {
+        height: 42px; /* 2行 * 行高1.4 ≈ 42px */
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .lab-card-info {
+        height: 71px; /* 3行 * 行高1.7 ≈ 71px */
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
+
+/* 响应式适配（优化移动端体验） */
+@media (max-width: 1200px) {
+    .lab-nav, .lab-container {
+        width: 95%;
+    }
+}
+
+@media (max-width: 992px) {
+    .lab-content {
+        flex-direction: column;
+    }
+
+    .lab-filter {
+        width: 100%;
+    }
+
+    .filter-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .filter-item {
+        margin-bottom: 0;
+        flex: 1;
+        min-width: 120px;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .lab-list {
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .lab-container {
+        padding: 20px;
+    }
+
+    .lab-header h2 {
+        font-size: 24px;
+    }
+
+    .lab-modal-header {
+        padding: 20px 24px;
+    }
+
+    .lab-modal-body {
+        padding: 24px;
+    }
+
+    .lab-modal-basic {
+        grid-template-columns: 1fr;
+    }
+
+    /* 移动端 line-clamp 适配 */
+    .lab-card-title {
+        font-size: 17px;
+        -webkit-line-clamp: 2;
+        -moz-line-clamp: 2;
+        -ms-line-clamp: 2;
+        line-clamp: 2;
+    }
+
+    .lab-card-info {
+        -webkit-line-clamp: 3;
+        -moz-line-clamp: 3;
+        -ms-line-clamp: 3;
+        line-clamp: 3;
+    }
+}
+
+@media (max-width: 576px) {
+    .lab-list {
+        grid-template-columns: 1fr;
+    }
+
+    .lab-modal-header h3 {
+        font-size: 20px;
+    }
+
+    .lab-category-tag {
+        margin-left: 0;
+        margin-top: 8px;
+        display: block;
+        width: fit-content;
+    }
+
+    /* 移动端文本大小优化 */
+    .lab-card-title {
+        font-size: 16px;
+    }
+
+    .lab-card-info {
+        font-size: 13px;
+        -webkit-line-clamp: 3;
+        -moz-line-clamp: 3;
+        -ms-line-clamp: 3;
+        line-clamp: 3;
+    }
+}

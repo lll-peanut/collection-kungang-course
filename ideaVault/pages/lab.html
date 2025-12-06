@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>重点实验室 - 学院简介</title>
+    <!-- 引入外部资源（字体图标+重置样式） -->
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <!-- 项目样式文件 -->
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/college.css">
+    <!-- 实验室专属样式（优化后） -->
+    <link rel="stylesheet" href="../css/lab-detail.css">
+</head>
+<body>
+    <!-- 简化导航：仅保留返回学院简介链接 -->
+    <nav class="lab-nav">
+        <a href="college.html" class="back-to-college">
+            <i class="fas fa-arrow-left"></i>
+            <span>返回学院简介</span>
+        </a>
+    </nav>
+
+    <!-- 重点实验室主区域 -->
+    <section id="labs" class="lab-container">
+        <div class="lab-header">
+            <h2>重点实验室</h2>
+            <p>学院拥有27个专业实验室，覆盖人工智能、网络计算、数据科学等多个领域，为本科生提供优质科研实践平台</p>
+        </div>
+
+        <div class="lab-content">
+            <!-- 左侧分类筛选栏 -->
+            <div class="lab-filter">
+                <h3>实验室分类</h3>
+                <ul class="filter-list">
+                    <li class="filter-item active" data-category="all">全部实验室</li>
+                    <li class="filter-item" data-category="ai">人工智能类 (9个)</li>
+                    <li class="filter-item" data-category="network">网络计算类 (6个)</li>
+                    <li class="filter-item" data-category="data">数据科学类 (5个)</li>
+                    <li class="filter-item" data-category="security">信息安全类 (4个)</li>
+                    <li class="filter-item" data-category="ic">集成电路类 (3个)</li>
+                </ul>
+            </div>
+
+            <!-- 右侧实验室列表与详情 -->
+            <div class="lab-list">
+                <div class="lab-card-placeholder">
+                    <i class="fas fa-flask"></i>
+                    <p>请选择左侧分类查看实验室</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 实验室详情弹窗 -->
+        <div class="lab-modal" id="labModal">
+            <div class="lab-modal-content">
+                <span class="lab-close">&times;</span>
+                <div class="lab-modal-header">
+                    <h3 id="modalLabName"></h3>
+                    <span id="modalLabCategory" class="lab-category-tag"></span>
+                </div>
+                <div class="lab-modal-body">
+                    <div class="lab-modal-basic">
+                        <div class="lab-basic-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span class="item-label">地点：</span>
+                            <span id="modalLabLocation"></span>
+                        </div>
+                        <div class="lab-basic-item">
+                            <i class="fas fa-user"></i>
+                            <span class="item-label">联系人：</span>
+                            <span id="modalLabPerson"></span>
+                        </div>
+                        <div class="lab-basic-item">
+                            <i class="fas fa-envelope"></i>
+                            <span class="item-label">联系方式：</span>
+                            <a id="modalLabContact" href=""></a>
+                        </div>
+                    </div>
+                    <div class="lab-modal-intro">
+                        <h4>研究方向与特色</h4>
+                        <p id="modalLabIntro"></p>
+                    </div>
+                    <div class="lab-modal-achievement">
+                        <h4>科研成果与学生培养</h4>
+                        <p id="modalLabAchievement"></p>
+                        <a id="modalLabLink" href="" target="_blank" class="lab-achievement-link">
+                            查看更多成果 <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 引入JS文件 -->
+    <script src="../js/common.js"></script>
+    <script src="../js/lab-data.js"></script>
+    <script src="../js/lab-script.js"></script>
+</body>
+</html>
